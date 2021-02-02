@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.techtown.word_first.databinding.ActivityMainBinding
 
