@@ -46,6 +46,12 @@ class SearchFragment: Fragment()  {
         val view = inflater.inflate(R.layout.fragment_search, container , false)
 
         val myWebView: WebView = view.findViewById(R.id.webView)
+
+        myWebView.apply {
+            settings.javaScriptEnabled = true
+            webViewClient = WebViewClient()
+        }
+
         myWebView.loadUrl("https://dic.daum.net/")
 
         return view
