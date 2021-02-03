@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(){
         //layout과 연결시키는 것
         //setContentView(R.layout.activity_main)
 
-        Log.d(TAG, "MainActivity - onCreat() called")
+        Log.d(TAG, "MainActivity - onCreate() called")
 
         //바인딩을 사용한 것.
         binding.bottomNav.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)

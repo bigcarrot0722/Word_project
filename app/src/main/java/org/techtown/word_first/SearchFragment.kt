@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 
 class SearchFragment: Fragment()  {
+
+    private lateinit var callback: OnBackPressedCallback
 
     companion object{
         const val TAG : String = "로그"
@@ -31,6 +34,12 @@ class SearchFragment: Fragment()  {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(TAG, "SearchFragment - onAttach() called")
+
+        callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
     // 뷰가 생성되었을 때 화면과 연결해주는 것
@@ -56,5 +65,6 @@ class SearchFragment: Fragment()  {
 
         return view
     }
+
 
 }
