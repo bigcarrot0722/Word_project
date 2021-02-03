@@ -28,12 +28,17 @@ class MainActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
 
+
+
         //layout과 연결시키는 것
         //setContentView(R.layout.activity_main)
 
         Log.d(TAG, "MainActivity - onCreat() called")
 
+        //바인딩을 사용한 것.
         binding.bottomNav.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)
+        searchFragment = SearchFragment.newInstance()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_frame, searchFragment).commit()
 
     }
 
