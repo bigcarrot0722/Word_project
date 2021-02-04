@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import org.techtown.word_first.databinding.ActivityMainBinding
 
 
@@ -21,7 +22,8 @@ class MainActivity : AppCompatActivity(){
     private lateinit var studyFragment : StudyFragment
     private lateinit var wordFragment : WordFragment
     private lateinit var binding: ActivityMainBinding
-    private lateinit var webView: WebView
+
+    var mBackWait:Long = 0
 
     val DB_NAME = "sqlite.sql"
     val DB_VERSION = 1
@@ -77,6 +79,15 @@ class MainActivity : AppCompatActivity(){
         true
     }
 
+    override fun onBackPressed() {
+        // 뒤로가기 버튼 클릭
+        if(System.currentTimeMillis() - mBackWait >=2000 ) {
+            mBackWait = System.currentTimeMillis()
+            Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        } else {
+            finish() //액티비티 종료
+        }
+    }
 
 
 

@@ -1,17 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F30B5A"
-    android:orientation="vertical"
-    android:gravity="center"
-    >
+    android:layout_margin="16dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="80dp"
+    android:gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!--   나중에쓸 수도 있는 옵셥임 android:foreground="?android:attr/selectableItemBackground"-->
+    <!--    android:focusable="true"-->
+    <!--    android:clickable="true"-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="study"
-        android:textSize="50dp"/>
+        android:orientation="vertical"
+        android:layout_gravity="center">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="@color/teal_700"
+            android:layout_gravity="center"
+            android:text="bigcarrot"/>
+
+    </LinearLayout>
+
+    //conerradius 코너 기울기
+    //elevation은 입체적으로 보일 수 있게 끔 함
+</androidx.cardview.widget.CardView>
