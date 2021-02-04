@@ -14,6 +14,8 @@ import org.techtown.word_first.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity(){
 
     //멤버 변수를 선언함
+
+
     private lateinit var searchFragment : SearchFragment
     private lateinit var studyFragment : StudyFragment
     private lateinit var wordFragment : WordFragment
@@ -61,7 +63,8 @@ class MainActivity : AppCompatActivity(){
         when(it.itemId){
             R.id.menu_search -> {
                 Log.d(TAG, "MainActivity - 검색 클릭")
-                //이부분을 다시 재로딩하는 코드를 삽입..
+                searchFragment = SearchFragment.newInstance()
+                transaction.replace(R.id.fragments_frame, searchFragment).commit()
                 webView.loadUrl("https://dic.daum.net/")
             }
             R.id.menu_study -> {
