@@ -12,6 +12,7 @@ import org.techtown.word_first.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity(){
+    
 
     //멤버 변수를 선언함
 
@@ -35,15 +36,6 @@ class MainActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
 
-        webView = findViewById(R.id.webView)
-
-        webView.apply {
-            settings.javaScriptEnabled = true
-            webViewClient = WebViewClient()
-        }
-
-        webView.loadUrl("https://dic.daum.net/")
-
 
         //layout과 연결시키는 것
         //setContentView(R.layout.activity_main)
@@ -65,7 +57,7 @@ class MainActivity : AppCompatActivity(){
                 Log.d(TAG, "MainActivity - 검색 클릭")
                 searchFragment = SearchFragment.newInstance()
                 transaction.replace(R.id.fragments_frame, searchFragment).commit()
-                webView.loadUrl("https://dic.daum.net/")
+
             }
             R.id.menu_study -> {
                 Log.d(TAG, "MainActivity - 공부 클릭")
