@@ -3,9 +3,7 @@ package org.techtown.word_first
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
@@ -56,10 +54,25 @@ class SearchFragment: Fragment()  {
 
         myWebView.loadUrl("https://dic.daum.net/")
 
+        setHasOptionsMenu(true)
+
         return view
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.top_nav_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
-
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        when (item.itemId){
+            R.id.homeNav ->{
+                myWebView.loadUrl("https://dic.daum.net/")
+                true
+            }
+            else ->{
+                //insert문
+                false
+            }
+        }
 }

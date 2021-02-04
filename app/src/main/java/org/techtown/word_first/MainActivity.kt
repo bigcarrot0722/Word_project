@@ -12,7 +12,7 @@ import org.techtown.word_first.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity(){
-    
+
 
     //멤버 변수를 선언함
 
@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
     private lateinit var webView: WebView
 
-    private var backBtnTime: Long = 0
+    val DB_NAME = "sqlite.sql"
+    val DB_VERSION = 1
 
     companion object{
 
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
 
+        //val helper = SqliteHelper(this, DB_NAME, DB_VERSION )
+
 
         //layout과 연결시키는 것
         //setContentView(R.layout.activity_main)
@@ -44,8 +47,8 @@ class MainActivity : AppCompatActivity(){
 
         //바인딩을 사용한 것.
         binding.bottomNav.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)
-       // searchFragment = SearchFragment.newInstance()
-       // supportFragmentManager.beginTransaction().add(R.id.fragments_frame, searchFragment).commit()
+        searchFragment = SearchFragment.newInstance()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_frame, searchFragment).commit()
 
     }
 
@@ -74,18 +77,6 @@ class MainActivity : AppCompatActivity(){
         true
     }
 
-    override fun onBackPressed() {
-        val curTime = System.currentTimeMillis()
-        val gapTime: Long = curTime - backBtnTime
-        if (webView.canGoBack()) {
-            webView.goBack()
-        } else if (0 <= gapTime && 2000 >= gapTime) {
-            super.onBackPressed()
-        } else {
-            backBtnTime = curTime
-            Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
-        }
-    }
 
 
 
