@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     app:cardCornerRadius="20dp"
-    app:cardElevation="80dp"
     android:gravity="center">
 
     <!--   나중에쓸 수도 있는 옵셥임 android:foreground="?android:attr/selectableItemBackground"-->

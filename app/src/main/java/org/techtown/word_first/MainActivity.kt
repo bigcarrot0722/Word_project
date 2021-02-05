@@ -70,11 +70,13 @@ class MainActivity : AppCompatActivity(){
             R.id.menu_search -> {
                 Log.d(TAG, "MainActivity - 검색 클릭")
                 transaction.replace(R.id.fragments_frame, searchFragment).commit()
-                
+
+
             }
             R.id.menu_study -> {
                 Log.d(TAG, "MainActivity - 공부 클릭")
                 transaction.replace(R.id.fragments_frame, studyFragment).commit()
+
 
             }
             R.id.menu_word -> {
