@@ -51,6 +51,10 @@ class MainActivity : AppCompatActivity(){
         binding.bottomNav.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)
         searchFragment = SearchFragment.newInstance()
         supportFragmentManager.beginTransaction().add(R.id.fragments_frame, searchFragment).commit()
+        searchFragment = SearchFragment.newInstance()
+        studyFragment = StudyFragment.newInstance()
+        wordFragment = WordFragment.newInstance()
+
 
     }
 
@@ -60,18 +64,15 @@ class MainActivity : AppCompatActivity(){
         when(it.itemId){
             R.id.menu_search -> {
                 Log.d(TAG, "MainActivity - 검색 클릭")
-                searchFragment = SearchFragment.newInstance()
                 transaction.replace(R.id.fragments_frame, searchFragment).commit()
 
             }
             R.id.menu_study -> {
                 Log.d(TAG, "MainActivity - 공부 클릭")
-                studyFragment = StudyFragment.newInstance()
                 transaction.replace(R.id.fragments_frame, studyFragment).commit()
             }
             R.id.menu_word -> {
                 Log.d(TAG, "MainActivity - 단어장 클릭")
-                wordFragment = WordFragment.newInstance()
                 transaction.replace(R.id.fragments_frame, wordFragment).commit()
             }
         }
