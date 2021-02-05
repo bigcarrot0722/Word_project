@@ -2,6 +2,8 @@ package org.techtown.word_first
 
 import android.app.AlertDialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -101,9 +103,10 @@ class SearchFragment: Fragment()  {
             }//homeNav가 선택 되면 다시 다음 사전으로 연결, 일종의 홈버튼과 같음
             else ->{
                 val builder: AlertDialog.Builder? = activity?.let {
-                    AlertDialog.Builder(it)
+                    AlertDialog.Builder(it, R.style.CustomAlertDialog)
+                    //alertdialog를 R.style.CustomAlertDialog의 테마로 만듦.
                 }
-                val dialogView = layoutInflater.inflate(R.layout.search_dialog, null)
+                val dialogView = layoutInflater.inflate(R.layout.search_dialog,null)
 
                 val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
                 val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)

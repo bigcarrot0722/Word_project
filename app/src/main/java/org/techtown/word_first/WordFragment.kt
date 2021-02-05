@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 
 class WordFragment: Fragment() {
 
+
+
     companion object{
         const val TAG : String = "로그"
 
@@ -22,6 +24,8 @@ class WordFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "WordFragment - onCreate() called")
+
+        
     }
 
     //fragment를 안고 있는 액티비티에 붙었을 때

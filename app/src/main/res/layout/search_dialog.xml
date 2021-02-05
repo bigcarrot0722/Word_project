@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        app:srcCompat="@drawable/logo_alertdialog"
+        android:background="@color/main_blue"/>
+
     <TextView
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="단어"
@@ -14,8 +25,12 @@
         android:id="@+id/dialog_word"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:hint="추가할 단어를 입력하세요."
-        android:inputType="textPersonName"/>
+        android:inputType="textPersonName" />
 
     <TextView
         android:layout_width="match_parent"
@@ -27,8 +42,14 @@
         android:id="@+id/dialog_mean"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:hint="추가할 단어의 뜻을 입력하세요.(예: 뜻1, 뜻2)"
         android:inputType="textPersonName"/>
+
+
 
 
 </LinearLayout>
