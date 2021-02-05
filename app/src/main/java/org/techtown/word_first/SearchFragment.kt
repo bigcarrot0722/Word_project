@@ -1,11 +1,13 @@
 package org.techtown.word_first
 
+import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 
 class SearchFragment: Fragment()  {
@@ -98,7 +100,26 @@ class SearchFragment: Fragment()  {
                 true
             }//homeNav가 선택 되면 다시 다음 사전으로 연결, 일종의 홈버튼과 같음
             else ->{
-                //insert문
+                val builder: AlertDialog.Builder? = activity?.let {
+                    AlertDialog.Builder(it)
+                }
+                val dialogView = layoutInflater.inflate(R.layout.search_dialog, null)
+
+                val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
+                val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
+
+                builder?.setView(dialogView)
+                    ?.setPositiveButton("확인") { dialogInterface, i ->
+                        // 확인 버튼 클릭하면 받은 단어/뜻 DB로 보내기
+
+                        /*mainTv.text = dialogText.text.toString()
+                        mainRb.rating = dialogRatingBar.rating
+                        확인일 때 main의 View의 값에 dialog View에 있는 값을 적용*/
+                    }
+                    ?.setNegativeButton("취소") { dialogInterface, i ->
+                        // 취소일 때 아무 액션이 없으므로 빈칸
+                    }
+                    ?.show()
                 false
             }//+버튼이 클릭되면 단어장에 추가되게 함
         }
