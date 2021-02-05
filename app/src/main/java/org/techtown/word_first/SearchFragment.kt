@@ -82,7 +82,7 @@ class SearchFragment: Fragment()  {
         myWebView.saveState(webviewstate)
         Log.d(TAG, "onPause() -Bundle-${webviewstate}")
 
-    }//멈추면 웹페이지 정보 저장
+    }//다른 프래그먼트로 이동 시에 웹페이지 정보 저장
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

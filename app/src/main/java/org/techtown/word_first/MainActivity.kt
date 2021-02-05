@@ -1,11 +1,15 @@
 package org.techtown.word_first
 
+import android.content.ClipData
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -22,6 +26,7 @@ class MainActivity : AppCompatActivity(){
     private lateinit var studyFragment : StudyFragment
     private lateinit var wordFragment : WordFragment
     private lateinit var binding: ActivityMainBinding
+
 
     var mBackWait:Long = 0
 
@@ -65,15 +70,17 @@ class MainActivity : AppCompatActivity(){
             R.id.menu_search -> {
                 Log.d(TAG, "MainActivity - 검색 클릭")
                 transaction.replace(R.id.fragments_frame, searchFragment).commit()
-
+                
             }
             R.id.menu_study -> {
                 Log.d(TAG, "MainActivity - 공부 클릭")
                 transaction.replace(R.id.fragments_frame, studyFragment).commit()
+
             }
             R.id.menu_word -> {
                 Log.d(TAG, "MainActivity - 단어장 클릭")
                 transaction.replace(R.id.fragments_frame, wordFragment).commit()
+
             }
         }
 
@@ -94,3 +101,5 @@ class MainActivity : AppCompatActivity(){
 
 
 }
+
+

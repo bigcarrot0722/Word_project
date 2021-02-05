@@ -2,17 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_search"
-        android:title="search"
-        android:icon="@drawable/menu_search"/>
+        android:icon="@drawable/menu_search"
+        android:title="@string/menu_search"
+        />
 
     <item
         android:id="@+id/menu_study"
-        android:title="study"
-        android:icon="@drawable/menu_study"/>
+        android:title="@string/menu_study"
+        android:icon="@drawable/menu_study" />
 
     <item
         android:id="@+id/menu_word"
-        android:title="word"
+        android:title="@string/menu_word"
         android:icon="@drawable/menu_word"/>
 
 </menu>
