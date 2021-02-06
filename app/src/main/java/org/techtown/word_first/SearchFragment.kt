@@ -30,6 +30,7 @@ class SearchFragment: Fragment()  {
         fun newInstance() : SearchFragment{
             return SearchFragment()
         }
+
     }
 
     //메모리에 올라갔을 때
@@ -115,13 +116,15 @@ class SearchFragment: Fragment()  {
         return super.onOptionsItemSelected(item)
     }
 
-    fun openWordDialog(){
+    fun openWordDialog(){ //단어를 추가하는 대화상자 실행
         val builder: AlertDialog.Builder? = activity?.let {
             AlertDialog.Builder(it, R.style.CustomAlertDialog)
             //alertdialog를 R.style.CustomAlertDialog의 테마로 만듦.
         }
         val dialogView: View = layoutInflater.inflate(R.layout.search_dialog,null)
 
+        builder?.setIcon(R.drawable.logo_alertdialog)
+        builder?.setTitle("단어추가")
         val dialog = builder?.setView(dialogView)?.show()
 
         val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
@@ -139,6 +142,8 @@ class SearchFragment: Fragment()  {
             sqlitedb.execSQL("INSERT INTO wordTBL VALUES ('"+str_word+"','"+str_mean+"')")
             sqlitedb.close()
             dbManager.close()
+
+            Toast.makeText(activity,"추가 되었습니다",Toast.LENGTH_SHORT).show()
             dialog?.dismiss()
         }
 
