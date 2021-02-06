@@ -1,9 +1,9 @@
 package org.techtown.word_first
 
-
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -20,7 +20,8 @@ class SearchFragment: Fragment()  {
 
     private var webviewstate: Bundle? = null
     lateinit var myWebView: WebView
-
+    lateinit var dbManager: DBManager
+    lateinit var sqlitedb: SQLiteDatabase
 
 
     companion object{
@@ -43,7 +44,7 @@ class SearchFragment: Fragment()  {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         Log.d(TAG, "SearchFragment - onAttach() called")
-       Log.d(TAG, "onAttach -Bundle- ${webviewstate}")
+        Log.d(TAG, "onAttach -Bundle- ${webviewstate}")
     }
 
 
@@ -99,8 +100,9 @@ class SearchFragment: Fragment()  {
     }
     //action bar override 한 것
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean =
-        when (item.itemId){
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.homeNav -> {
                 myWebView.loadUrl("https://dic.daum.net/")
                 true
@@ -110,6 +112,8 @@ class SearchFragment: Fragment()  {
                 true
             }//+버튼이 클릭되면 단어장에 추가되게 함
         }
+        return super.onOptionsItemSelected(item)
+    }
 
     fun openWordDialog(){
         val builder: AlertDialog.Builder? = activity?.let {
@@ -126,13 +130,20 @@ class SearchFragment: Fragment()  {
         val calcelbtn = dialogView.findViewById<Button>(R.id.cancel_button)
 
         plusbtn.setOnClickListener {
+            var str_word:String = dialogWord.text.toString()
+            var str_mean:String = dialogMean.text.toString()
 
+            dbManager = DBManager(activity,"wordDB",null,1)
+            sqlitedb = dbManager.writableDatabase
+
+            sqlitedb.execSQL("INSERT INTO wordTBL VALUES ('"+str_word+"','"+str_mean+"')")
+            sqlitedb.close()
+            dbManager.close()
+            dialog?.dismiss()
         }
 
         calcelbtn.setOnClickListener {
-           dialog?.dismiss()
+            dialog?.dismiss()
         }
     }
-
-
 }

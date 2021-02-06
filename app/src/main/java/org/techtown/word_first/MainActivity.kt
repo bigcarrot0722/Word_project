@@ -100,8 +100,6 @@ class MainActivity : AppCompatActivity(){
     }
 
 
-
-
 }
 
 
