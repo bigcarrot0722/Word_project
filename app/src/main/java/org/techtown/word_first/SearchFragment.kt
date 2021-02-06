@@ -1,6 +1,8 @@
 package org.techtown.word_first
 
+
 import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -9,7 +11,9 @@ import android.util.Log
 import android.view.*
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 class SearchFragment: Fragment()  {
@@ -102,30 +106,33 @@ class SearchFragment: Fragment()  {
                 true
             }//homeNav가 선택 되면 다시 다음 사전으로 연결, 일종의 홈버튼과 같음
             else ->{
-                val builder: AlertDialog.Builder? = activity?.let {
-                    AlertDialog.Builder(it, R.style.CustomAlertDialog)
-                    //alertdialog를 R.style.CustomAlertDialog의 테마로 만듦.
-                }
-                val dialogView = layoutInflater.inflate(R.layout.search_dialog,null)
-
-                val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
-                val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
-
-                builder?.setView(dialogView)
-                    ?.setPositiveButton("확인") { dialogInterface, i ->
-                        // 확인 버튼 클릭하면 받은 단어/뜻 DB로 보내기
-
-                        /*mainTv.text = dialogText.text.toString()
-                        mainRb.rating = dialogRatingBar.rating
-                        확인일 때 main의 View의 값에 dialog View에 있는 값을 적용*/
-                    }
-                    ?.setNegativeButton("취소") { dialogInterface, i ->
-                        // 취소일 때 아무 액션이 없으므로 빈칸
-                    }
-                    ?.show()
-                false
+                openWordDialog()
+                true
             }//+버튼이 클릭되면 단어장에 추가되게 함
         }
+
+    fun openWordDialog(){
+        val builder: AlertDialog.Builder? = activity?.let {
+            AlertDialog.Builder(it, R.style.CustomAlertDialog)
+            //alertdialog를 R.style.CustomAlertDialog의 테마로 만듦.
+        }
+        val dialogView: View = layoutInflater.inflate(R.layout.search_dialog,null)
+
+        val dialog = builder?.setView(dialogView)?.show()
+
+        val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
+        val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
+        val plusbtn = dialogView.findViewById<Button>(R.id.plus_button)
+        val calcelbtn = dialogView.findViewById<Button>(R.id.cancel_button)
+
+        plusbtn.setOnClickListener {
+
+        }
+
+        calcelbtn.setOnClickListener {
+           dialog?.dismiss()
+        }
+    }
 
 
 }

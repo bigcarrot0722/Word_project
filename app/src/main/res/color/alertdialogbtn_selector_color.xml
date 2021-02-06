@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:color="@color/main_blue"
+        android:state_pressed="true" />
+
+    <item android:color="@color/main_grey"
+        android:state_pressed="false"/>
+
+</selector>
+
+<!--alertdialog 클릭 여부에 따라 색상 바뀜 클릭시 main_blue로 아니면 main_grey-->
