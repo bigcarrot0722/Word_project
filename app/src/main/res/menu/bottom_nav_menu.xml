@@ -16,4 +16,9 @@
         android:title="@string/menu_word"
         android:icon="@drawable/menu_word"/>
 
+    <item
+        android:id="@+id/menu_translate"
+        android:title="translate"
+        android:icon="@drawable/menu_translate"/>
+
 </menu>

@@ -11,8 +11,7 @@
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
-
-
 </resources>
 
-<!--alertdialog를 설정하는 파일..-->
+    <!--alertdialog를 설정하는 파일..-->
+

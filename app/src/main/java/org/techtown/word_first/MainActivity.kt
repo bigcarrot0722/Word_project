@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(){
     private lateinit var searchFragment : SearchFragment
     private lateinit var studyFragment : StudyFragment
     private lateinit var wordFragment : WordFragment
+    private lateinit var translateFragment : TranslateFragment
     private lateinit var binding: ActivityMainBinding
 
 
@@ -46,9 +47,11 @@ class MainActivity : AppCompatActivity(){
         binding.bottomNav.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)
         searchFragment = SearchFragment.newInstance()
         supportFragmentManager.beginTransaction().add(R.id.fragments_frame, searchFragment).commit()
-        searchFragment = SearchFragment.newInstance()
+
+//        searchFragment = SearchFragment.newInstance()
         studyFragment = StudyFragment.newInstance()
         wordFragment = WordFragment.newInstance()
+        translateFragment = TranslateFragment.newInstance()
 
 
     }
@@ -73,6 +76,9 @@ class MainActivity : AppCompatActivity(){
                 Log.d(TAG, "MainActivity - 단어장 클릭")
                 transaction.replace(R.id.fragments_frame, wordFragment).commit()
 
+            }
+            else -> {
+                transaction.replace(R.id.fragments_frame, translateFragment).commit()
             }
         }
 
