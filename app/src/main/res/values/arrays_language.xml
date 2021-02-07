@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="setData">
+        <item>한국어</item>
+        <item>영어</item>
+        <item>중국어 번체</item>
+        <item>중국어 간체</item>
+        <item>일본어</item>
+    </string-array>
+    <!--스피너에 들어갈 내용    -->
+</resources>
+
+<!--스피너에 들어갈 배열 설정 파일-->
