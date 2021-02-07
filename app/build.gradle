@@ -10,6 +10,9 @@ android {
     compileSdkVersion 29
     buildToolsVersion "30.0.2"
 
+    buildFeatures{
+        viewBinding=true
+    }
     defaultConfig {
         applicationId "org.techtown.word_first"
         minSdkVersion 27
@@ -48,4 +51,6 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$rootProject.ext.kotlin_version"
+
 }

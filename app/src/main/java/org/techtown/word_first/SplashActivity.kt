@@ -16,6 +16,7 @@ class SplashActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         this.supportActionBar?.hide()
+        this.supportActionBar?.hide()
         CoroutineScope(Dispatchers.IO).launch {
             delay(time)
             val intent = Intent(applicationContext, MainActivity::class.java )
