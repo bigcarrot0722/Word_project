@@ -61,19 +61,19 @@ class StudyFragment: Fragment() {
 
         val view: View = inflater.inflate(R.layout.fragment_study, container , false)
 
-        listview.adapter=HBaseAdapter(requireContext(),item)
-        button=view.findViewById(R.id.btn1)
-        button.setOnClickListener {
-            listview.adapter=HbaseAdapter_word(requireContext(),item)
-        }
-        button2=view.findViewById(R.id.btn3)
-        button2.setOnClickListener {
-            listview.adapter=HBaseAdapter(requireContext(),item2)
-        }
-        button1=view.findViewById(R.id.btn2)
-        button1.setOnClickListener {
-            listview.adapter=HbaseAdapter_meaning(requireContext(),item1)
-        }
+//        listview.adapter=HBaseAdapter(requireContext(),item)
+//        button=view.findViewById(R.id.btn1)
+//        button.setOnClickListener {
+//            listview.adapter=HbaseAdapter_word(requireContext(),item)
+//        }
+//        button2=view.findViewById(R.id.btn3)
+//        button2.setOnClickListener {
+//            listview.adapter=HBaseAdapter(requireContext(),item2)
+//        }
+//        button1=view.findViewById(R.id.btn2)
+//        button1.setOnClickListener {
+//            listview.adapter=HbaseAdapter_meaning(requireContext(),item1)
+//        }
         return view
 
 }

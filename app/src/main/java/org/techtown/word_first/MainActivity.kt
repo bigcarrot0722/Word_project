@@ -77,7 +77,8 @@ class MainActivity : AppCompatActivity(){
                 transaction.replace(R.id.fragments_frame, wordFragment).commit()
 
             }
-            else -> {
+            R.id.menu_translate -> {
+                Log.d(TAG, "MainActivity - 번역기 클릭")
                 transaction.replace(R.id.fragments_frame, translateFragment).commit()
             }
         }

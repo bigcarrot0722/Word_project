@@ -37,10 +37,10 @@ class WordFragment: Fragment() {
     }
 
     //fragment를 안고 있는 액티비티에 붙었을 때
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.d(TAG, "WordFragment - onAttach() called")
-    }
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        Log.d(TAG, "WordFragment - onAttach() called")
+//    }
 
     // 뷰가 생성되었을 때 화면과 연결해주는 것
     //fragment와 레이아웃을 연결시켜주는 부분임.
@@ -52,7 +52,9 @@ class WordFragment: Fragment() {
 
         Log.d(TAG, "WordFragment - onCreateView() called")
 
+        /*view에 layout fragment_word 연결*/
         val view = inflater.inflate(R.layout.fragment_word, container, false)
+
 
         dbManager = DBManager(activity, "wordDB", null, 1)
         sqlitedb = dbManager.readableDatabase
@@ -141,14 +143,12 @@ class WordFragment: Fragment() {
         }
         val dialogView: View = layoutInflater.inflate(R.layout.search_dialog, null)
 
-        builder?.setIcon(R.drawable.logo_alertdialog)
-        builder?.setTitle("단어추가")
         val dialog = builder?.setView(dialogView)?.show()
 
         val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
         val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
-        val btnadd = dialogView.findViewById<Button>(R.id.btn_add)
-        val btncancel = dialogView.findViewById<Button>(R.id.btn_cancel)
+        val btnadd = dialogView.findViewById<Button>(R.id.plus_button)
+        val btncancel = dialogView.findViewById<Button>(R.id.cancel_button)
 
         btnadd.setOnClickListener {
             var str_word: String = dialogWord.text.toString()

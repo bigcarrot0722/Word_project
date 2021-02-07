@@ -118,6 +118,7 @@ class TranslateFragment: Fragment() {
         return view
     }
 
+    /*spinner연결 부분*/
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -126,7 +127,7 @@ class TranslateFragment: Fragment() {
         val spinner_setOut = view.findViewById<Spinner>(R.id.setOutLanguage)
 
         val setIndata = resources.getStringArray(R.array.setInData)
-        var setOutdata = resources.getStringArray(R.array.setOutData)
+        val setOutdata = resources.getStringArray(R.array.setOutData)
 
         /*스피너 어댑터 설정*/
         spinner_setIn.adapter = ArrayAdapter(this.activity!!, R.layout.support_simple_spinner_dropdown_item, setIndata)
@@ -148,7 +149,6 @@ class TranslateFragment: Fragment() {
                 selectInNation = "null"
             }
         }
-
 
 
         /* 번역할 언어가 선택 됐을 때 url로 보내기 위한 단어로 설정하는 코드임*/

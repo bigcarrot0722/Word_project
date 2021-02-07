@@ -24,8 +24,6 @@
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
-            app:layout_constraintStart_toStartOf="@id/textView"
-            app:layout_constraintTop_toTopOf="@id/textView"
             app:srcCompat="@drawable/logo_alertdialog"
             app:tint="@color/white" />
 

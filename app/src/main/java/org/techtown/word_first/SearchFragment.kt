@@ -3,6 +3,7 @@ package org.techtown.word_first
 import android.app.AlertDialog
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -12,6 +13,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
+
+
 
 class SearchFragment: Fragment()  {
 
@@ -19,6 +24,8 @@ class SearchFragment: Fragment()  {
     lateinit var myWebView: WebView
     lateinit var dbManager: DBManager
     lateinit var sqlitedb: SQLiteDatabase
+
+    lateinit var text: String
 
 
     companion object{
@@ -35,6 +42,7 @@ class SearchFragment: Fragment()  {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "SearchFragment - onCreate() called")
         Log.d(TAG, "onCreate -Bundle- ${webviewstate}")
+
 
     }
 
@@ -66,6 +74,7 @@ class SearchFragment: Fragment()  {
             settings.javaScriptEnabled = true
             webViewClient = WebViewClient()
         }
+
 
         if(webviewstate==null){
             myWebView.loadUrl("https://dic.daum.net/");
@@ -106,6 +115,12 @@ class SearchFragment: Fragment()  {
                 true
             }//homeNav가 선택 되면 다시 다음 사전으로 연결, 일종의 홈버튼과 같음
             else ->{
+                val currentSite = myWebView.getUrl().toString()
+                Log.d(TAG,"url 가져옴 $currentSite")
+//                LoadApplications(getActivity()!!.getPackageName()).execute("aaa")
+                //문제는 여기에 있음
+                AsyncTaskExample(this).execute()
+                Log.d(TAG,"loadApplications 실행됨")
                 openWordDialog()
                 true
             }//+버튼이 클릭되면 단어장에 추가되게 함
@@ -113,38 +128,66 @@ class SearchFragment: Fragment()  {
         return super.onOptionsItemSelected(item)
     }
 
+
+
+    private class LoadApplications(packageName: String) : AsyncTask<String,Void,String>() {
+
+
+        override fun doInBackground(vararg params: String?): String {
+            Log.d(TAG,"loadApplications 실행됨(1)")
+            Log.d(TAG,"loadApplications 실행됨(1)-${params}")
+            val doc: Document = Jsoup.connect("https://dic.daum.net/search.do?q=Cap").timeout(1000 * 100).get()
+            val word = doc.select("span.txt_emph1").eq(1).text()
+            Log.d(TAG,"뜻-meaning ${word}")
+            val meaning = doc.select("ul.list_search li span.txt_search").eq(1).text()
+            Log.d( TAG,"단어뜻-word ${meaning}")
+
+           return "$word, $meaning"
+       }
+
+        override fun onPostExecute(result: String?) {
+            Log.d(TAG,"loadApplications 실행됨(2)")
+            super.onPostExecute(result)
+            Log.d(TAG, "${result?.get(0)}")
+
+        }
+
+
+    }
+
+
+
+
     fun openWordDialog(){ //단어를 추가하는 대화상자 실행
         val builder: AlertDialog.Builder? = activity?.let {
             AlertDialog.Builder(it, R.style.CustomAlertDialog)
             //alertdialog를 R.style.CustomAlertDialog의 테마로 만듦.
         }
-        val dialogView: View = layoutInflater.inflate(R.layout.search_dialog,null)
+        val dialogView: View = layoutInflater.inflate(R.layout.search_dialog, null)
 
-        builder?.setIcon(R.drawable.logo_alertdialog)
-        builder?.setTitle("단어추가")
         val dialog = builder?.setView(dialogView)?.show()
 
         val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
         val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
-        val plusbtn = dialogView.findViewById<Button>(R.id.btn_add)
-        val calcelbtn = dialogView.findViewById<Button>(R.id.btn_cancel)
+        val plusbtn = dialogView.findViewById<Button>(R.id.plus_button)
+        val cancelbtn = dialogView.findViewById<Button>(R.id.cancel_button)
 
         plusbtn.setOnClickListener {
             var str_word:String = dialogWord.text.toString()
             var str_mean:String = dialogMean.text.toString()
 
-            dbManager = DBManager(activity,"wordDB",null,1)
+            dbManager = DBManager(activity, "wordDB", null, 1)
             sqlitedb = dbManager.writableDatabase
 
-            sqlitedb.execSQL("INSERT INTO wordTBL VALUES ('"+str_word+"','"+str_mean+"')")
+            sqlitedb.execSQL("INSERT INTO wordTBL VALUES ('" + str_word + "','" + str_mean + "')")
             sqlitedb.close()
             dbManager.close()
 
-            Toast.makeText(activity,"추가 되었습니다",Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "추가 되었습니다", Toast.LENGTH_SHORT).show()
             dialog?.dismiss()
         }
 
-        calcelbtn.setOnClickListener {
+        cancelbtn.setOnClickListener {
             dialog?.dismiss()
         }
     }
