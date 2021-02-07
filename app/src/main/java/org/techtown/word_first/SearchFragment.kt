@@ -11,6 +11,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import org.jsoup.Jsoup
@@ -26,6 +27,8 @@ class SearchFragment: Fragment()  {
     lateinit var sqlitedb: SQLiteDatabase
 
     lateinit var text: String
+    lateinit var allWord: String
+    //allWord변수는 비동기식으로 돌려 parsing된 문자열이 저장되는 변수임!! 매우 중요
 
 
     companion object{
@@ -119,8 +122,9 @@ class SearchFragment: Fragment()  {
                 Log.d(TAG,"url 가져옴 $currentSite")
 //                LoadApplications(getActivity()!!.getPackageName()).execute("aaa")
                 //문제는 여기에 있음
-                AsyncTaskExample(this).execute()
-                Log.d(TAG,"loadApplications 실행됨")
+                allWord = AsyncTaskExample(this).execute("$currentSite").get()
+
+                Log.d(TAG,"loadApplications 실행됨~~~ ")
                 openWordDialog()
                 true
             }//+버튼이 클릭되면 단어장에 추가되게 함
@@ -171,6 +175,9 @@ class SearchFragment: Fragment()  {
         val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
         val plusbtn = dialogView.findViewById<Button>(R.id.plus_button)
         val cancelbtn = dialogView.findViewById<Button>(R.id.cancel_button)
+//        val k = dialogView.findViewById<TextView>(R.id.textView2)
+        
+//        k.text = allWord
 
         plusbtn.setOnClickListener {
             var str_word:String = dialogWord.text.toString()
