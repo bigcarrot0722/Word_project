@@ -72,35 +72,42 @@ class TranslateFragment: Fragment() {
                 Log.d(TAG,"selectInNation의 값은?22 - ${selectInNation}")
                 Log.d(TAG,"selectOutNation의 값은?22 - ${selectOutNation}")
 
-                val JSON = "application/json; charset=utf-8".toMediaTypeOrNull() //json을 사용함
+                if(selectInNation != selectOutNation) {
+                    /*번역기 부분 코드*/
+                    val JSON = "application/json; charset=utf-8".toMediaTypeOrNull() //json을 사용함
 
-                val client = OkHttpClient()
-                val url = "https://openapi.naver.com/v1/papago/n2mt" //api요청 연결 url
-                //papago url
-                val json = JSONObject()
-                json.put("source", selectInNation)
-                json.put("target", selectOutNation)
-                json.put("text", "${sentenceTranslate.text}")//Edittext부분에 적은 부분을 검색함
-                //번역할 내용을 담는 부분임
+                    val client = OkHttpClient()
+                    val url = "https://openapi.naver.com/v1/papago/n2mt" //번역 api요청 연결 url
 
-                val body = json.toString().toRequestBody(JSON)
-                val request = Request.Builder()
-                        .header("X-Naver-Client-Id", "ARlRfQh8jMOqRnJIALqo")//내 api id
-                        .addHeader("X-Naver-Client-Secret", "k69RHlesQC")//내 api 비밀번호
-                        .url(url)
-                        .post(body)
-                        .build()
-                client.newCall(request).enqueue(object : Callback {
-                    override fun onFailure(call: Call, e: IOException) {
+                    //papago url
+                    val json = JSONObject()
+                    json.put("source", selectInNation)
+                    json.put("target", selectOutNation)
+                    json.put("text", "${sentenceTranslate.text}")//Edittext부분에 적은 부분을 검색함
+                    //번역할 내용을 담는 부분임
 
-                    }//실패시
+                    val body = json.toString().toRequestBody(JSON)
+                    val request = Request.Builder()
+                            .header("X-Naver-Client-Id", "ARlRfQh8jMOqRnJIALqo")//내 api id
+                            .addHeader("X-Naver-Client-Secret", "k69RHlesQC")//내 api 비밀번호
+                            .url(url)
+                            .post(body)
+                            .build()
+                    client.newCall(request).enqueue(object : Callback {
+                        override fun onFailure(call: Call, e: IOException) {
 
-                    override fun onResponse(call: Call, response: Response) {
-                        val str = response!!.body!!.string()
-                        val papagoTM = Gson().fromJson<PapagoTM>(str, PapagoTM::class.java)
-                        sentenceComplete.text = papagoTM.message!!.result?.translatedText.toString() // papagoTM을 통해서 원하는 결과만 뽑음
-                    }//성공시
-                })
+                        }//실패시
+
+                        override fun onResponse(call: Call, response: Response) {
+                            val str = response!!.body!!.string()
+                            val papagoTM = Gson().fromJson<PapagoTM>(str, PapagoTM::class.java)
+                            sentenceComplete.text = papagoTM.message!!.result?.translatedText.toString() // papagoTM을 통해서 원하는 결과만 뽑음
+                        }//성공시
+                    })
+                }
+                else{
+                    sentenceComplete.text = "번역할 언어를 다시 설정하세요."
+                }
             }
             else{
                 sentenceComplete.text = "번역할 문자를 입력하세요"
@@ -118,9 +125,12 @@ class TranslateFragment: Fragment() {
         val spinner_setIn = view.findViewById<Spinner>(R.id.setInLanguage)
         val spinner_setOut = view.findViewById<Spinner>(R.id.setOutLanguage)
 
+        val setIndata = resources.getStringArray(R.array.setInData)
+        var setOutdata = resources.getStringArray(R.array.setOutData)
+
         /*스피너 어댑터 설정*/
-        spinner_setIn.adapter = ArrayAdapter(this.activity!!, R.layout.support_simple_spinner_dropdown_item, resources.getStringArray(R.array.setInData))
-        spinner_setOut.adapter = ArrayAdapter(this.activity!!, R.layout.support_simple_spinner_dropdown_item, resources.getStringArray(R.array.setOutData))
+        spinner_setIn.adapter = ArrayAdapter(this.activity!!, R.layout.support_simple_spinner_dropdown_item, setIndata)
+        spinner_setOut.adapter = ArrayAdapter(this.activity!!, R.layout.support_simple_spinner_dropdown_item, setOutdata)
 
         /* 작성할 언어가 선택 됐을 때 url로 보내기 위한 단어로 설정하는 코드임*/
         spinner_setIn.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -138,6 +148,8 @@ class TranslateFragment: Fragment() {
                 selectInNation = "null"
             }
         }
+
+
 
         /* 번역할 언어가 선택 됐을 때 url로 보내기 위한 단어로 설정하는 코드임*/
         spinner_setOut.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
