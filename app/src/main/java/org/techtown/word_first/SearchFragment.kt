@@ -1,11 +1,8 @@
 package org.techtown.word_first
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -129,8 +126,8 @@ class SearchFragment: Fragment()  {
 
         val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
         val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
-        val plusbtn = dialogView.findViewById<Button>(R.id.plus_button)
-        val calcelbtn = dialogView.findViewById<Button>(R.id.cancel_button)
+        val plusbtn = dialogView.findViewById<Button>(R.id.btn_add)
+        val calcelbtn = dialogView.findViewById<Button>(R.id.btn_cancel)
 
         plusbtn.setOnClickListener {
             var str_word:String = dialogWord.text.toString()

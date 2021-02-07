@@ -1,26 +1,18 @@
 package org.techtown.word_first
 
-import android.content.ClipData
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import org.techtown.word_first.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity(){
 
-
     //멤버 변수를 선언함
-
 
     private lateinit var searchFragment : SearchFragment
     private lateinit var studyFragment : StudyFragment
@@ -30,21 +22,19 @@ class MainActivity : AppCompatActivity(){
 
     var mBackWait:Long = 0
 
-    val DB_NAME = "sqlite.sql"
-    val DB_VERSION = 1
-
     companion object{
-
         const val TAG: String = "로그"
     }
+
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        //val helper = SqliteHelper(this, DB_NAME, DB_VERSION )
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setIcon(R.drawable.logo_alertdialog)
+        setTitle("단어장 앱")
 
 
         //layout과 연결시키는 것
@@ -98,7 +88,6 @@ class MainActivity : AppCompatActivity(){
             finish() //액티비티 종료
         }
     }
-
 
 }
 
