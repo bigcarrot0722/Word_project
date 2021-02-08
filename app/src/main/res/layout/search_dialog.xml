@@ -85,7 +85,7 @@
         app:layout_constraintTop_toBottomOf="@+id/dialog_mean">
 
         <Button
-            android:id="@+id/cancel_button"
+            android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -96,7 +96,7 @@
             android:textSize="18dp" />
 
         <Button
-            android:id="@+id/plus_button"
+            android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

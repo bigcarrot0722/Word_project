@@ -3,16 +3,19 @@ package org.techtown.word_first
 import android.app.AlertDialog
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-
+import org.jsoup.Jsoup
+import org.jsoup.nodes.Document
 
 
 
@@ -114,7 +117,7 @@ class SearchFragment: Fragment()  {
                 myWebView.loadUrl("https://dic.daum.net/")
                 true
             }//homeNav가 선택 되면 다시 다음 사전으로 연결, 일종의 홈버튼과 같음
-            else ->{
+            R.id.addNav ->{
                 val currentSite = myWebView.getUrl().toString()
                 Log.d(TAG,"url 가져옴 $currentSite")
                 allWord = AsyncTaskExample(this).execute("$currentSite").get()
@@ -137,8 +140,8 @@ class SearchFragment: Fragment()  {
 
         val dialogWord = dialogView.findViewById<TextView>(R.id.dialog_word)
         val dialogMean = dialogView.findViewById<TextView>(R.id.dialog_mean)
-        val plusbtn = dialogView.findViewById<Button>(R.id.plus_button)
-        val cancelbtn = dialogView.findViewById<Button>(R.id.cancel_button)
+        val btnadd = dialogView.findViewById<Button>(R.id.btn_add)
+        val btncancel = dialogView.findViewById<Button>(R.id.btn_cancel)
 
         val kk : List<String> = allWord.split("/")
 
@@ -148,7 +151,7 @@ class SearchFragment: Fragment()  {
         Log.d(TAG,"zzzzzzz${kk}")
 //        k.text = allWord
 
-        plusbtn.setOnClickListener {
+        btnadd.setOnClickListener {
             var str_word:String = dialogWord.text.toString()
             var str_mean:String = dialogMean.text.toString()
 
@@ -163,7 +166,7 @@ class SearchFragment: Fragment()  {
             dialog?.dismiss()
         }
 
-        cancelbtn.setOnClickListener {
+        btncancel.setOnClickListener {
             dialog?.dismiss()
         }
     }

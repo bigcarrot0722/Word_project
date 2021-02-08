@@ -88,9 +88,6 @@ class StudyFragment: Fragment() {
         }
         return view
 
-}
-
-
-
+    }
 
 }
