@@ -12,7 +12,7 @@ class AsyncTaskExample(private var fragment: SearchFragment) : AsyncTask<String,
         Log.d(SearchFragment.TAG, "loadApplications 실행됨(1)")
         Log.d(SearchFragment.TAG, "loadApplications 실행됨(1)-${params[0]}")
         val doc: Document = Jsoup.connect("${params[0]}").timeout(1000 * 100).get()
-        val word = doc.select("span.txt_emph1").eq(1).text()
+        val word = doc.select("span.txt_emph1").eq(0).text()
         Log.d(SearchFragment.TAG, "뜻-meaning ${word}")
         val k : Elements? = doc.select("ul.list_search li span.num_search")
         val a = k?.size
