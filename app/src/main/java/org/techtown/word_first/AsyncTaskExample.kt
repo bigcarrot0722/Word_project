@@ -12,20 +12,39 @@ class AsyncTaskExample(private var fragment: SearchFragment) : AsyncTask<String,
         val doc: Document = Jsoup.connect("${params[0]}").timeout(1000 * 100).get()
         val word = doc.select("span.txt_emph1").eq(1).text()
         Log.d(SearchFragment.TAG,"뜻-meaning ${word}")
-        val meaning1 = doc.select("ul.list_search li span.txt_search").eq(1).text()
-        val meaning2 = doc.select("ul.list_search li span.txt_search").eq(2).text()
-        val meaning3 = doc.select("ul.list_search li span.txt_search").eq(3).text()
-        val meaning4 = doc.select("ul.list_search li span.txt_search").eq(4).text()
-        //select부분 문법 찾아서 고치기
-        Log.d(SearchFragment.TAG,"단어뜻-word ${meaning1}")
+        var i = 0 //for문에 사용할 변수
+        var meaning = "" //반환값으로 사용할 변수
+        var real = true
+        while(real) {
+            val m = doc.select("ul.list_search li span.num_search").eq(i).text().replace(".","")
+            val m2 = doc.select("ul.list_search li span.num_search").eq(i+1).text().replace(".","")
 
-        return "$word / $meaning1 , $meaning2 , $meaning3 , $meaning4"
+            if(m.toInt() > m2.toInt() ){
+                Log.d(SearchFragment.TAG,"해결하기2 ${m}/${m2}")
+                real = false
+            }
+            else{
+                Log.d(SearchFragment.TAG,"해결하기1 ${m}/${m2}")
+                i++
+            }
+        }
+        Log.d(SearchFragment.TAG,"i의 값은? ${i}")
+        for (k in 0..i){
+            meaning += doc.select("ul.list_search li span.num_search").eq(k).text()
+            meaning += doc.select("ul.list_search li span.txt_search").eq(k).text()
+            meaning += " "
+            Log.d(SearchFragment.TAG,"단어뜻-word ${meaning}")
+        }
+        //select부분 문법 찾아서 고치기
+
+        return "$word /$meaning"
     }
 
     override fun onPostExecute(result: String?) {
         Log.d(SearchFragment.TAG,"loadApplications 실행됨(2)")
         super.onPostExecute(result)
         //Log.d(SearchFragment.TAG, "$result")
+        Log.d(SearchFragment.TAG,"단어뜻-word ${result}")
 
     }
 }
