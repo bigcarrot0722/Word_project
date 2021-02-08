@@ -79,14 +79,14 @@ class WordFragment: Fragment() {
             tvWord.text = str_word
             tvWord.textSize = 20f
             tvWord.setBackgroundResource(R.drawable.word_rounded)
-            tvWord.setPadding(40,5,40,10)
+            tvWord.setPadding(45,10,45,15)
             layout_item.addView(tvWord)
 
             var tvMean: TextView = TextView(activity)
             tvMean.text = str_mean
             tvMean.textSize = 15f
             tvMean.setBackgroundResource(R.drawable.mean_rounded)
-            tvMean.setPadding(40,5,40,10)
+            tvMean.setPadding(45,15,45,20)
             layout_item.addView(tvMean)
 
             layout_item.setOnClickListener {
@@ -98,7 +98,7 @@ class WordFragment: Fragment() {
                 modifywordDialog(selected_word, selected_mean)
             }
 
-            layout_item.setPadding(40, 45, 40, 25)
+            layout_item.setPadding(70, 55, 70, 25)
             layout.addView(layout_item)
 
             registerForContextMenu(layout)
