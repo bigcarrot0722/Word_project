@@ -141,14 +141,14 @@ class WordFragment: Fragment() {
             AlertDialog.Builder(it, R.style.CustomAlertDialog)
             //alertdialog를 R.style.CustomAlertDialog의 테마로 만듦.
         }
-        val dialogView: View = layoutInflater.inflate(R.layout.search_dialog, null)
+        val dialogView: View = layoutInflater.inflate(R.layout.wordplus_dialog, null)
 
         val dialog = builder?.setView(dialogView)?.show()
 
-        val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
-        val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
-        val btnadd = dialogView.findViewById<Button>(R.id.plus_button)
-        val btncancel = dialogView.findViewById<Button>(R.id.cancel_button)
+        val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_wordWordFragment)
+        val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_meanWordFragment)
+        val btnadd = dialogView.findViewById<Button>(R.id.plus_buttonWordFragment)
+        val btncancel = dialogView.findViewById<Button>(R.id.cancel_buttonWordFragment)
 
         btnadd.setOnClickListener {
             var str_word: String = dialogWord.text.toString()

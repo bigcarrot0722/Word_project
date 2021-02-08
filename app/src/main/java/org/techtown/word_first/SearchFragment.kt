@@ -3,19 +3,16 @@ package org.techtown.word_first
 import android.app.AlertDialog
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import org.jsoup.Jsoup
-import org.jsoup.nodes.Document
+
 
 
 
@@ -120,46 +117,13 @@ class SearchFragment: Fragment()  {
             else ->{
                 val currentSite = myWebView.getUrl().toString()
                 Log.d(TAG,"url 가져옴 $currentSite")
-//                LoadApplications(getActivity()!!.getPackageName()).execute("aaa")
-                //문제는 여기에 있음
                 allWord = AsyncTaskExample(this).execute("$currentSite").get()
-
-                Log.d(TAG,"loadApplications 실행됨~~~ ")
                 openWordDialog()
                 true
             }//+버튼이 클릭되면 단어장에 추가되게 함
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-
-    private class LoadApplications(packageName: String) : AsyncTask<String,Void,String>() {
-
-
-        override fun doInBackground(vararg params: String?): String {
-            Log.d(TAG,"loadApplications 실행됨(1)")
-            Log.d(TAG,"loadApplications 실행됨(1)-${params}")
-            val doc: Document = Jsoup.connect("https://dic.daum.net/search.do?q=Cap").timeout(1000 * 100).get()
-            val word = doc.select("span.txt_emph1").eq(1).text()
-            Log.d(TAG,"뜻-meaning ${word}")
-            val meaning = doc.select("ul.list_search li span.txt_search").eq(1).text()
-            Log.d( TAG,"단어뜻-word ${meaning}")
-
-           return "$word, $meaning"
-       }
-
-        override fun onPostExecute(result: String?) {
-            Log.d(TAG,"loadApplications 실행됨(2)")
-            super.onPostExecute(result)
-            Log.d(TAG, "${result?.get(0)}")
-
-        }
-
-
-    }
-
-
 
 
     fun openWordDialog(){ //단어를 추가하는 대화상자 실행
@@ -171,12 +135,17 @@ class SearchFragment: Fragment()  {
 
         val dialog = builder?.setView(dialogView)?.show()
 
-        val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
-        val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
+        val dialogWord = dialogView.findViewById<TextView>(R.id.dialog_word)
+        val dialogMean = dialogView.findViewById<TextView>(R.id.dialog_mean)
         val plusbtn = dialogView.findViewById<Button>(R.id.plus_button)
         val cancelbtn = dialogView.findViewById<Button>(R.id.cancel_button)
-//        val k = dialogView.findViewById<TextView>(R.id.textView2)
-        
+
+        val kk : List<String> = allWord.split("/")
+
+        dialogWord.text = kk[0].toString()
+        dialogMean.text = kk[1].toString()
+
+        Log.d(TAG,"zzzzzzz${kk}")
 //        k.text = allWord
 
         plusbtn.setOnClickListener {

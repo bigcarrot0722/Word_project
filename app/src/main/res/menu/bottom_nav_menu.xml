@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
-        android:id="@+id/menu_search"
-        android:icon="@drawable/menu_search"
-        android:title="@string/menu_search"
-        />
+        android:id="@+id/menu_word"
+        android:title="@string/menu_word"
+        android:icon="@drawable/menu_word"/>
 
     <item
         android:id="@+id/menu_study"
@@ -12,9 +12,10 @@
         android:icon="@drawable/menu_study" />
 
     <item
-        android:id="@+id/menu_word"
-        android:title="@string/menu_word"
-        android:icon="@drawable/menu_word"/>
+        android:id="@+id/menu_search"
+        android:icon="@drawable/menu_search"
+        android:title="@string/menu_search"
+        />
 
     <item
         android:id="@+id/menu_translate"

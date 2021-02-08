@@ -45,13 +45,15 @@ public class MainActivity : AppCompatActivity(){
 
         //바인딩을 사용한 것.
         binding.bottomNav.setOnNavigationItemSelectedListener(onBottomNavigationSelectedListener)
-        searchFragment = SearchFragment.newInstance()
-        supportFragmentManager.beginTransaction().add(R.id.fragments_frame, searchFragment).commit()
+        wordFragment = WordFragment.newInstance()
+        supportFragmentManager.beginTransaction().add(R.id.fragments_frame, wordFragment).commit()
 
 //        searchFragment = SearchFragment.newInstance()
+        searchFragment = SearchFragment.newInstance()
         studyFragment = StudyFragment.newInstance()
         wordFragment = WordFragment.newInstance()
         translateFragment = TranslateFragment.newInstance()
+
 
 
     }

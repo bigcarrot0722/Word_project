@@ -19,7 +19,7 @@ class AsyncTaskExample(private var fragment: SearchFragment) : AsyncTask<String,
         //select부분 문법 찾아서 고치기
         Log.d(SearchFragment.TAG,"단어뜻-word ${meaning1}")
 
-        return "$word / $meaning1 + $meaning2 + $meaning3 + $meaning4"
+        return "$word / $meaning1 , $meaning2 , $meaning3 , $meaning4"
     }
 
     override fun onPostExecute(result: String?) {
