@@ -50,6 +50,7 @@ class TranslateFragment: Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
+
         Log.d(TAG, "TranslateFragment - onCreateView() called")
 
         val view = inflater.inflate(R.layout.fragment_translate, container, false)
@@ -57,6 +58,10 @@ class TranslateFragment: Fragment() {
         transbutton = view.findViewById(R.id.btnTranslate)
         sentenceComplete = view.findViewById(R.id.complete_sentence)
         sentenceTranslate = view.findViewById(R.id.translate_sentence)
+
+        if(sentenceTranslate.text != null){
+            sentenceTranslate.setText(null)
+        }
 
         //Log.d(TAG,"senteceTranslate의 값은? - ${sentenceTranslate.text}")
 
