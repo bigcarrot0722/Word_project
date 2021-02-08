@@ -10,7 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.techtown.word_first.databinding.ActivityMainBinding
 
 
-class MainActivity : AppCompatActivity(){
+public class MainActivity : AppCompatActivity(){
 
     //멤버 변수를 선언함
 
