@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
-
+import com.google.gson.Gson
 
 
 class TranslateFragment: Fragment() {
@@ -70,8 +70,9 @@ class TranslateFragment: Fragment() {
 
                 if(selectInNation != selectOutNation) {
                     /*번역기 부분 코드*/
-                        //translateWord = AsyncTaskInTranslate(this).execute("${selectInNation},$selectOutNation,${sentenceTranslate.text}").get()
-                        sentenceComplete.text = translateWord
+                        translateWord = AsyncTaskInTranslate(this).execute("${selectInNation},$selectOutNation,${sentenceTranslate.text}").get()
+                        val papagoTM = Gson().fromJson<PapagoTM>(translateWord, PapagoTM::class.java)
+                        sentenceComplete.text = papagoTM.message!!.result?.translatedText.toString()
                 }
                 else{
                     sentenceComplete.text = "번역할 언어를 다시 설정하세요."
