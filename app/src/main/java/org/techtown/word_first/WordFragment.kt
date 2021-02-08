@@ -1,5 +1,6 @@
 package org.techtown.word_first
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.database.Cursor
@@ -44,6 +45,7 @@ class WordFragment: Fragment() {
 
     // 뷰가 생성되었을 때 화면과 연결해주는 것
     //fragment와 레이아웃을 연결시켜주는 부분임.
+    @SuppressLint("ResourceAsColor")
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -76,12 +78,16 @@ class WordFragment: Fragment() {
             var tvWord: TextView = TextView(activity)
             tvWord.text = str_word
             tvWord.textSize = 25f
-            tvWord.setBackgroundColor(Color.LTGRAY)
+            //tvWord.setBackgroundColor(R.color.main_blue)
+            tvWord.setBackgroundResource(R.drawable.word_rounded)
+            tvWord.setPadding(30,0,30,0)
             layout_item.addView(tvWord)
 
             var tvMean: TextView = TextView(activity)
             tvMean.text = str_mean
             tvMean.textSize = 20f
+            tvMean.setBackgroundResource(R.drawable.mean_rounded)
+            tvMean.setPadding(30,0,30,0)
             layout_item.addView(tvMean)
 
             layout_item.setOnClickListener {
@@ -93,7 +99,7 @@ class WordFragment: Fragment() {
                 modifywordDialog(selected_word, selected_mean)
             }
 
-            layout_item.setPadding(0, 0, 0, 25)
+            layout_item.setPadding(0, 0, 0, 55)
             layout.addView(layout_item)
 
             registerForContextMenu(layout)
@@ -149,6 +155,7 @@ class WordFragment: Fragment() {
         val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_meanWordFragment)
         val btnadd = dialogView.findViewById<Button>(R.id.plus_buttonWordFragment)
         val btncancel = dialogView.findViewById<Button>(R.id.cancel_buttonWordFragment)
+
 
         btnadd.setOnClickListener {
             var str_word: String = dialogWord.text.toString()
@@ -223,5 +230,3 @@ class WordFragment: Fragment() {
         }
     }
 }
-
-
