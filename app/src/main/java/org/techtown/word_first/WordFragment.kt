@@ -106,6 +106,7 @@ class WordFragment: Fragment() {
             num++
         }
         cursor.close()
+        cursor.close()
         sqlitedb.close()
         dbManager.close()
 
