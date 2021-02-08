@@ -77,17 +77,16 @@ class WordFragment: Fragment() {
 
             var tvWord: TextView = TextView(activity)
             tvWord.text = str_word
-            tvWord.textSize = 25f
-            //tvWord.setBackgroundColor(R.color.main_blue)
+            tvWord.textSize = 20f
             tvWord.setBackgroundResource(R.drawable.word_rounded)
-            tvWord.setPadding(30,0,30,0)
+            tvWord.setPadding(40,5,40,10)
             layout_item.addView(tvWord)
 
             var tvMean: TextView = TextView(activity)
             tvMean.text = str_mean
-            tvMean.textSize = 20f
+            tvMean.textSize = 15f
             tvMean.setBackgroundResource(R.drawable.mean_rounded)
-            tvMean.setPadding(30,0,30,0)
+            tvMean.setPadding(40,5,40,10)
             layout_item.addView(tvMean)
 
             layout_item.setOnClickListener {
@@ -99,7 +98,7 @@ class WordFragment: Fragment() {
                 modifywordDialog(selected_word, selected_mean)
             }
 
-            layout_item.setPadding(0, 0, 0, 55)
+            layout_item.setPadding(40, 45, 40, 25)
             layout.addView(layout_item)
 
             registerForContextMenu(layout)
@@ -186,8 +185,8 @@ class WordFragment: Fragment() {
         }
         val dialogView: View = layoutInflater.inflate(R.layout.word_dialog, null)
 
-        builder?.setIcon(R.drawable.logo_alertdialog)
-        builder?.setTitle("단어 수정 및 삭제")
+        //builder?.setIcon(R.drawable.logo_alertdialog)
+        //builder?.setTitle("단어 수정 및 삭제")
         val dialog = builder?.setView(dialogView)?.show()
 
         val dialogWord = dialogView.findViewById<EditText>(R.id.dialog_word)
