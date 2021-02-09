@@ -148,7 +148,7 @@ class SearchFragment: Fragment()  {
         dialogWord.text = kk[0].toString()
         dialogMean.text = kk[1].toString()
 
-        Log.d(TAG,"zzzzzzz${kk}")
+ //       Log.d(TAG,"zzzzzzz${kk}")
 //        k.text = allWord
 
         btnadd.setOnClickListener {
