@@ -10,13 +10,13 @@
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="60dp"
+        android:background="@color/main_blue"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/main_blue"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -27,6 +27,16 @@
             app:srcCompat="@drawable/logo_alertdialog"
             app:tint="@color/white" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="12dp"
+            android:text=" 단어 추가"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+
     </LinearLayout>
 
     <TextView
@@ -35,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="단어"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linear" />
@@ -59,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="뜻"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dialog_word" />
