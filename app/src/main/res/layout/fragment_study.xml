@@ -68,50 +68,50 @@
         </LinearLayout>
 
     </ScrollView>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn2"
-        app:layout_constraintVertical_bias="0.016"
-        tools:layout_editor_absoluteX="-16dp">
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btn2"-->
+<!--        app:layout_constraintVertical_bias="0.016"-->
+<!--        tools:layout_editor_absoluteX="-16dp">-->
 
-        <LinearLayout
-            android:id="@+id/word_study1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/word_study1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingLeft="16dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingRight="16dp"-->
+<!--            android:paddingBottom="16dp">-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-    </ScrollView>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn2"
-        app:layout_constraintVertical_bias="0.016"
-        tools:layout_editor_absoluteX="-16dp">
+<!--    </ScrollView>-->
+<!--    <ScrollView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/btn2"-->
+<!--        app:layout_constraintVertical_bias="0.016"-->
+<!--        tools:layout_editor_absoluteX="-16dp">-->
 
-        <LinearLayout
-            android:id="@+id/word_study2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/word_study2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical"-->
+<!--            android:paddingLeft="16dp"-->
+<!--            android:paddingTop="16dp"-->
+<!--            android:paddingRight="16dp"-->
+<!--            android:paddingBottom="16dp">-->
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
 
-    </ScrollView>
+<!--    </ScrollView>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -83,41 +83,42 @@ class StudyFragment: Fragment() {
         cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
 
         var num: Int = 0
-        while (cursor.moveToNext()) {
-            var str_word = cursor.getString(cursor.getColumnIndex("word")).toString()
-            var str_mean = cursor.getString(cursor.getColumnIndex("mean")).toString()
 
-            var layout_item: LinearLayout = LinearLayout(activity)
-            layout_item.orientation = LinearLayout.VERTICAL
-            layout_item.id = num
-
-            var tvWord: TextView = TextView(activity)
-            tvWord.text = str_word
-            tvWord.textSize = 25f
-            //tvWord.setBackgroundColor(R.color.main_blue)
-            tvWord.setBackgroundResource(R.drawable.word_rounded)
-            tvWord.setPadding(30,0,30,0)
-            layout_item.addView(tvWord)
-
-            var tvMean: TextView = TextView(activity)
-            tvMean.text = str_mean
-            tvMean.textSize = 20f
-            tvMean.setBackgroundResource(R.drawable.mean_rounded)
-            tvMean.setPadding(30,0,30,0)
-            layout_item.addView(tvMean)
-
-
-
-            layout_item.setPadding(0, 0, 0, 55)
-            layout.addView(layout_item)
-
-            registerForContextMenu(layout)
-            num++
-        }
-        cursor.close()
-        cursor.close()
-        sqlitedb.close()
-        dbManager.close()
+//        while (cursor.moveToNext()) {
+//            var str_word = cursor.getString(cursor.getColumnIndex("word")).toString()
+//            var str_mean = cursor.getString(cursor.getColumnIndex("mean")).toString()
+//
+//            var layout_item: LinearLayout = LinearLayout(activity)
+//            layout_item.orientation = LinearLayout.VERTICAL
+//            layout_item.id = num
+//
+//            var tvWord: TextView = TextView(activity)
+//            tvWord.text = str_word
+//            tvWord.textSize = 25f
+//            //tvWord.setBackgroundColor(R.color.main_blue)
+//            tvWord.setBackgroundResource(R.drawable.word_rounded_study)
+//            tvWord.setPadding(30,0,30,0)
+//            layout_item.addView(tvWord)
+//
+//            var tvMean: TextView = TextView(activity)
+//            tvMean.text = str_mean
+//            tvMean.textSize = 20f
+//            tvMean.setBackgroundResource(R.drawable.mean_rounded)
+//            tvMean.setPadding(30,0,30,0)
+//            layout_item.addView(tvMean)
+//
+//
+//
+//            layout_item.setPadding(0, 0, 0, 55)
+//            layout.addView(layout_item)
+//
+//            registerForContextMenu(layout)
+//            num++
+//        }
+//        cursor.close()
+//        cursor.close()
+//        sqlitedb.close()
+//        dbManager.close()
 
         setHasOptionsMenu(true)
 
@@ -125,12 +126,13 @@ class StudyFragment: Fragment() {
         button.setOnClickListener {dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
 
-            layout = view.findViewById(R.id.word_study1)
 
             var cursor: Cursor
             cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
 
             var num: Int = 0
+            layout.removeAllViews()
+
             while (cursor.moveToNext()) {
 
                 var str_word = cursor.getString(cursor.getColumnIndex("word")).toString()
@@ -144,11 +146,9 @@ class StudyFragment: Fragment() {
                 tvWord.text = str_word
                 tvWord.textSize = 25f
                 //tvWord.setBackgroundColor(R.color.main_blue)
-                tvWord.setBackgroundResource(R.drawable.word_rounded)
+                tvWord.setBackgroundResource(R.drawable.word_rounded_study)
                 tvWord.setPadding(30,0,30,0)
                 layout_item.addView(tvWord)
-
-
 
                 layout_item.setPadding(0, 0, 0, 55)
                 layout.addView(layout_item)
@@ -164,12 +164,13 @@ class StudyFragment: Fragment() {
             setHasOptionsMenu(true)
 
         }
+
         button2=view.findViewById(R.id.btn3)
         button2.setOnClickListener {
             dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
 
-            layout = view.findViewById(R.id.word_study)
+            layout.removeAllViews()
 
             var cursor: Cursor
             cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
@@ -187,14 +188,14 @@ class StudyFragment: Fragment() {
                 tvWord.text = str_word
                 tvWord.textSize = 25f
                 //tvWord.setBackgroundColor(R.color.main_blue)
-                tvWord.setBackgroundResource(R.drawable.word_rounded)
-                tvWord.setPadding(30,0,30,0)
+                tvWord.setBackgroundResource(R.drawable.word_rounded_study)
+                tvWord.setPadding(30,30,30,30)
                 layout_item.addView(tvWord)
 
                 var tvMean: TextView = TextView(activity)
                 tvMean.text = str_mean
                 tvMean.textSize = 20f
-                tvMean.setBackgroundResource(R.drawable.mean_rounded)
+                tvMean.setBackgroundResource(R.drawable.word_rounded_study)
                 tvMean.setPadding(30,0,30,0)
                 layout_item.addView(tvMean)
 
@@ -213,12 +214,13 @@ class StudyFragment: Fragment() {
 
             setHasOptionsMenu(true)
         }
+
         button1=view.findViewById(R.id.btn2)
         button1.setOnClickListener {
             dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
 
-            layout = view.findViewById(R.id.word_study2)
+            layout.removeAllViews()
 
             var cursor: Cursor
             cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
@@ -237,7 +239,7 @@ class StudyFragment: Fragment() {
                 var tvMean: TextView = TextView(activity)
                 tvMean.text = str_mean
                 tvMean.textSize = 20f
-                tvMean.setBackgroundResource(R.drawable.mean_rounded)
+                tvMean.setBackgroundResource(R.drawable.word_rounded_study)
                 tvMean.setPadding(30,0,30,0)
                 layout_item.addView(tvMean)
 
