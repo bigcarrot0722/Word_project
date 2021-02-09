@@ -77,8 +77,7 @@
         android:padding="10dp"
         android:text=""
         android:textSize="17sp"
-        android:gravity="center_vertical"
-        tools:text="ddddd" />
+        android:gravity="center_vertical" />
         <!-- 받아온 값을 나타냄 (번역 완료)    -->
 
 
