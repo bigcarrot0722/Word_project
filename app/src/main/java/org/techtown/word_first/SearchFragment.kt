@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
@@ -45,6 +46,9 @@ class SearchFragment: Fragment()  {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "SearchFragment - onCreate() called")
         Log.d(TAG, "onCreate -Bundle- ${webviewstate}")
+        var aaa: androidx.appcompat.app.ActionBar? =
+            (getActivity() as AppCompatActivity?)!!.supportActionBar
+        aaa!!.show()
 
 
     }

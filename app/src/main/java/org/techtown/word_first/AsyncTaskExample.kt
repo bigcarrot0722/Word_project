@@ -35,7 +35,7 @@ class AsyncTaskExample(private var fragment: SearchFragment) : AsyncTask<String,
                 for (i in 0..k) {
                     meaning += word.select("ul.list_mean li span.num_mean").eq(i).text()
                     meaning += word.select("ul.list_mean li span.txt_mean").eq(i).text()
-                    meaning += "  "
+                    meaning += "   "
 
                     Log.d("meaning", "$meaning")
                 }

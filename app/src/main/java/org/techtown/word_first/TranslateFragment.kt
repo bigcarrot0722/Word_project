@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
 
@@ -35,6 +36,8 @@ class TranslateFragment: Fragment() {
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        var aaa: androidx.appcompat.app.ActionBar? = (getActivity() as AppCompatActivity?)!!.supportActionBar
+//        aaa!!.hide()
 
         Log.d(TAG, "StudyFragment - onCreate() called")
 

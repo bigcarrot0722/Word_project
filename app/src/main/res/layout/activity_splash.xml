@@ -12,9 +12,9 @@
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginEnd="65dp"
         android:indeterminate="true"
         android:indeterminateTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,13 +37,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="380dp"
-        android:layout_height="335dp"
-        android:layout_marginTop="84dp"
+        android:layout_width="331dp"
+        android:layout_height="281dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="130dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/maintitle" />
+        app:srcCompat="@drawable/splash" />
 
 
 

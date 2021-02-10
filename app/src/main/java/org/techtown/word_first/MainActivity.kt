@@ -1,5 +1,6 @@
 package org.techtown.word_first
 
+import android.app.ActionBar
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -30,6 +31,7 @@ public class MainActivity : AppCompatActivity(){
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.elevation=0.0f
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -38,6 +40,8 @@ public class MainActivity : AppCompatActivity(){
         val colorDrawable = ColorDrawable(Color.parseColor("#FDDDDD"))
         supportActionBar?.setBackgroundDrawable(colorDrawable)
         setTitle("단어장 앱")
+
+
 
 
         //layout과 연결시키는 것
@@ -60,6 +64,8 @@ public class MainActivity : AppCompatActivity(){
 
     }
 
+//    var ab : ActionBar? = getActionBar()
+
     private val onBottomNavigationSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
@@ -68,23 +74,21 @@ public class MainActivity : AppCompatActivity(){
                 Log.d(TAG, "MainActivity - 검색 클릭")
 
                 transaction.replace(R.id.fragments_frame, searchFragment).commit()
-
-
             }
             R.id.menu_study -> {
                 Log.d(TAG, "MainActivity - 공부 클릭")
                 transaction.replace(R.id.fragments_frame, studyFragment).commit()
 
-
+//                ab?.hide()
             }
             R.id.menu_word -> {
                 Log.d(TAG, "MainActivity - 단어장 클릭")
                 transaction.replace(R.id.fragments_frame, wordFragment).commit()
-
             }
             R.id.menu_translate -> {
                 Log.d(TAG, "MainActivity - 번역기 클릭")
                 transaction.replace(R.id.fragments_frame, translateFragment).commit()
+
             }
         }
 
