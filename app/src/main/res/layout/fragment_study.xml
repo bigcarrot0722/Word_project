@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="5"
-    android:background="@color/main_blue"
+    android:background="@color/word_grey"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
@@ -25,10 +25,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Study"
-            android:textColor="#fff"
+            android:textColor="@color/main_grey"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/imagView"
-            android:textSize="18sp"
+            android:textSize="30sp"
             android:layout_marginTop="10dp"
             android:textStyle="bold"/>
 
@@ -48,7 +48,7 @@
             app:cardCornerRadius="4dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             app:cardElevation="4dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
@@ -61,7 +61,7 @@
                     android:layout_height="80dp"/>
                 <TextView
                     android:layout_width="match_parent"
-                    android:text="Study"
+                    android:text="Start"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:layout_marginStart="20dp"
@@ -75,7 +75,7 @@
             app:cardCornerRadius="4dp"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="10dp"
+            android:layout_margin="20dp"
             app:cardElevation="4dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1">
@@ -91,7 +91,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:text="Study"
+                    android:text="answer note"
                     android:textSize="18sp"
                     android:textColor="@color/black"
                     android:layout_marginStart="20dp"

@@ -111,7 +111,7 @@ class WordFragment: Fragment() {
 
         setHasOptionsMenu(true)
 
-        button=view.findViewById(R.id.btn1)
+        button=view.findViewById(R.id.btn_w)
         button.setOnClickListener {dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
 
@@ -154,7 +154,7 @@ class WordFragment: Fragment() {
 
         }
 
-        button2=view.findViewById(R.id.btn3)
+        button2=view.findViewById(R.id.btn_wm)
         button2.setOnClickListener {
             dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
@@ -204,7 +204,7 @@ class WordFragment: Fragment() {
             setHasOptionsMenu(true)
         }
 
-        button1=view.findViewById(R.id.btn2)
+        button1=view.findViewById(R.id.btn_m)
         button1.setOnClickListener {
             dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase

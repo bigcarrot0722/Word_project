@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginStart="65dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="55dp"
         android:layout_marginEnd="65dp"
         android:indeterminate="true"
         android:indeterminateTint="@color/black"
@@ -37,14 +37,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="331dp"
-        android:layout_height="281dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="130dp"
+        android:layout_width="339dp"
+        android:layout_height="293dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/splash" />
+        app:srcCompat="@drawable/splash_main" />
 
 
 
