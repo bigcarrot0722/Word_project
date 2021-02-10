@@ -12,7 +12,7 @@
 
 
         <Button
-            android:id="@+id/btn2"
+            android:id="@+id/btn_m"
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
@@ -20,7 +20,7 @@
             android:text="뜻" />
 
         <Button
-            android:id="@+id/btn3"
+            android:id="@+id/btn_wm"
             android:layout_width="132dp"
             android:layout_height="wrap_content"
 
@@ -30,7 +30,7 @@
             android:textColor="@color/black" />
 
         <Button
-            android:id="@+id/btn1"
+            android:id="@+id/btn_w"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"

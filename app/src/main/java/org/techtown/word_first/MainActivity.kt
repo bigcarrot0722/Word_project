@@ -36,11 +36,11 @@ public class MainActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
         supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setIcon(R.drawable.logo_alertdialog)
+        supportActionBar?.elevation=0.0f
         supportActionBar?.setTitle("모두의 단어")
         val colorDrawable = ColorDrawable(Color.parseColor("#FDDDDD"))
         supportActionBar?.setBackgroundDrawable(colorDrawable)
-        setTitle("단어장 앱")
-
 
 
 
@@ -72,7 +72,6 @@ public class MainActivity : AppCompatActivity(){
         when(it.itemId){
             R.id.menu_search -> {
                 Log.d(TAG, "MainActivity - 검색 클릭")
-
                 transaction.replace(R.id.fragments_frame, searchFragment).commit()
             }
             R.id.menu_study -> {
