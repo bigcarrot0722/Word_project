@@ -1,9 +1,10 @@
 package org.techtown.word_first
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,7 +21,6 @@ public class MainActivity : AppCompatActivity(){
     private lateinit var translateFragment : TranslateFragment
     private lateinit var binding: ActivityMainBinding
 
-
     var mBackWait:Long = 0
 
     companion object{
@@ -34,7 +34,9 @@ public class MainActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setIcon(R.drawable.logo_alertdialog)
+        supportActionBar?.setTitle("모두의 단어")
+        val colorDrawable = ColorDrawable(Color.parseColor("#FDDDDD"))
+        supportActionBar?.setBackgroundDrawable(colorDrawable)
         setTitle("단어장 앱")
 
 
@@ -64,6 +66,7 @@ public class MainActivity : AppCompatActivity(){
         when(it.itemId){
             R.id.menu_search -> {
                 Log.d(TAG, "MainActivity - 검색 클릭")
+
                 transaction.replace(R.id.fragments_frame, searchFragment).commit()
 
 

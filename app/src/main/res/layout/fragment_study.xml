@@ -1,50 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
-    <Button
-        android:id="@+id/btn3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/popup_background"
-        android:text="단어+뜻"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn2"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn1"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="136dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:text="뜻만" />
 
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="132dp"
+            android:layout_height="wrap_content"
 
-        android:layout_marginEnd="48dp"
-        android:text="뜻만"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn3"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:background="@drawable/popup_background"
+            android:backgroundTint="@color/white"
+            android:text="단어+뜻"
+            android:textColor="@color/black" />
 
-    <Button
-        android:id="@+id/btn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:text="단어만" />
+    </LinearLayout>
 
-        android:layout_marginTop="16dp"
-        android:text="단어만"
-        app:layout_constraintEnd_toStartOf="@+id/btn3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -59,60 +53,13 @@
             android:id="@+id/word_study"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp">
+            android:orientation="vertical">
 
         </LinearLayout>
 
     </ScrollView>
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btn2"-->
-<!--        app:layout_constraintVertical_bias="0.016"-->
-<!--        tools:layout_editor_absoluteX="-16dp">-->
-
-<!--        <LinearLayout-->
-<!--            android:id="@+id/word_study1"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:paddingLeft="16dp"-->
-<!--            android:paddingTop="16dp"-->
-<!--            android:paddingRight="16dp"-->
-<!--            android:paddingBottom="16dp">-->
-
-<!--        </LinearLayout>-->
-
-<!--    </ScrollView>-->
-<!--    <ScrollView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/btn2"-->
-<!--        app:layout_constraintVertical_bias="0.016"-->
-<!--        tools:layout_editor_absoluteX="-16dp">-->
-
-<!--        <LinearLayout-->
-<!--            android:id="@+id/word_study2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical"-->
-<!--            android:paddingLeft="16dp"-->
-<!--            android:paddingTop="16dp"-->
-<!--            android:paddingRight="16dp"-->
-<!--            android:paddingBottom="16dp">-->
-
-<!--        </LinearLayout>-->
-
-<!--    </ScrollView>-->
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
+
 

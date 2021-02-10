@@ -84,15 +84,12 @@ class WordFragment: Fragment() {
 
             var tvMean: TextView = TextView(activity)
             tvMean.text = str_mean
-            tvMean.textSize = 15f
+            tvMean.textSize = 20f
             tvMean.setBackgroundResource(R.drawable.mean_rounded)
             tvMean.setPadding(45,15,45,20)
             layout_item.addView(tvMean)
 
             layout_item.setOnClickListener {
-                /*val intent = Intent(this,PersonnelInfo::class.java)
-                intent.putExtra("intent_name",str_name)
-                startActivity(intent)*/
                 selected_word = str_word
                 selected_mean = str_mean
                 modifywordDialog(selected_word, selected_mean)

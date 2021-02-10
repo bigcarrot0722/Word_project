@@ -1,7 +1,7 @@
 package org.techtown.word_first
 
+import android.app.ActionBar
 import android.app.Activity
-import android.app.AlertDialog
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
@@ -11,11 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import org.techtown.word_first.WordFragment.Companion.selected_mean
-import org.techtown.word_first.WordFragment.Companion.selected_word
 
 
 class StudyFragment: Fragment() {
@@ -50,6 +46,7 @@ class StudyFragment: Fragment() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "StudyFragment - onCreate() called")
 
+        //ab.show()
 
     }
 
@@ -144,13 +141,13 @@ class StudyFragment: Fragment() {
 
                 var tvWord: TextView = TextView(activity)
                 tvWord.text = str_word
-                tvWord.textSize = 25f
+                tvWord.textSize = 20f
                 //tvWord.setBackgroundColor(R.color.main_blue)
                 tvWord.setBackgroundResource(R.drawable.word_rounded_study)
-                tvWord.setPadding(30,0,30,0)
+                tvWord.setPadding(45, 15, 45, 20)
                 layout_item.addView(tvWord)
 
-                layout_item.setPadding(0, 0, 0, 55)
+                layout_item.setPadding(70, 55, 70, 25)
                 layout.addView(layout_item)
 
                 registerForContextMenu(layout)
@@ -186,22 +183,22 @@ class StudyFragment: Fragment() {
 
                 var tvWord: TextView = TextView(activity)
                 tvWord.text = str_word
-                tvWord.textSize = 25f
+                tvWord.textSize = 20f
                 //tvWord.setBackgroundColor(R.color.main_blue)
                 tvWord.setBackgroundResource(R.drawable.word_rounded_study)
-                tvWord.setPadding(30,30,30,30)
+                tvWord.setPadding(45, 15, 45, 20)
                 layout_item.addView(tvWord)
 
                 var tvMean: TextView = TextView(activity)
                 tvMean.text = str_mean
                 tvMean.textSize = 20f
                 tvMean.setBackgroundResource(R.drawable.word_rounded_study)
-                tvMean.setPadding(30,0,30,0)
+                tvMean.setPadding(45, 15, 45, 20)
                 layout_item.addView(tvMean)
 
 
 
-                layout_item.setPadding(0, 0, 0, 55)
+                layout_item.setPadding(70, 55, 70, 25)
                 layout.addView(layout_item)
 
                 registerForContextMenu(layout)
@@ -240,12 +237,12 @@ class StudyFragment: Fragment() {
                 tvMean.text = str_mean
                 tvMean.textSize = 20f
                 tvMean.setBackgroundResource(R.drawable.word_rounded_study)
-                tvMean.setPadding(30,0,30,0)
+                tvMean.setPadding(45, 15, 45, 20)
                 layout_item.addView(tvMean)
 
 
 
-                layout_item.setPadding(0, 0, 0, 55)
+                layout_item.setPadding(70, 55, 70, 25)
                 layout.addView(layout_item)
 
                 registerForContextMenu(layout)

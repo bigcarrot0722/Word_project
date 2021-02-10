@@ -27,6 +27,7 @@ class AsyncTaskExample(private var fragment: SearchFragment) : AsyncTask<String,
             var k =  word.select("ul.list_mean li span").size
             Log.d("k의 값","$k")
             if(k==1){
+                meaning += "1."
                 meaning += word.select("ul.list_mean li span.txt_mean").eq(0).text()
             }
             else {
