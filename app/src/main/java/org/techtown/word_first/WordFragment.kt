@@ -84,14 +84,14 @@ class WordFragment: Fragment() {
 
             var tvWord: TextView = TextView(activity)
             tvWord.text = str_word
-            tvWord.textSize = 20f
+            tvWord.textSize = 22f
             tvWord.setBackgroundResource(R.drawable.word_rounded)
             tvWord.setPadding(45,10,45,15)
             layout_item.addView(tvWord)
 
             var tvMean: TextView = TextView(activity)
             tvMean.text = str_mean
-            tvMean.textSize = 20f
+            tvMean.textSize = 13f
             tvMean.setBackgroundResource(R.drawable.mean_rounded)
             tvMean.setPadding(45,15,45,20)
             layout_item.addView(tvMean)
@@ -102,7 +102,7 @@ class WordFragment: Fragment() {
                 modifywordDialog(selected_word, selected_mean)
             }
 
-            layout_item.setPadding(70, 55, 70, 25)
+            layout_item.setPadding(70, 20, 70, 20)
             layout.addView(layout_item)
 
             registerForContextMenu(layout)
@@ -143,8 +143,9 @@ class WordFragment: Fragment() {
                 tvWord.setPadding(45, 15, 45, 20)
                 layout_item.addView(tvWord)
 
-                layout_item.setPadding(70, 55, 70, 25)
+                layout_item.setPadding(70, 25, 70, 25)
                 layout.addView(layout_item)
+
 
                 registerForContextMenu(layout)
                 num++
@@ -194,8 +195,14 @@ class WordFragment: Fragment() {
 
 
 
-                layout_item.setPadding(70, 55, 70, 25)
+                layout_item.setPadding(70, 20, 70, 20)
                 layout.addView(layout_item)
+
+                layout_item.setOnClickListener {
+                    selected_word = str_word
+                    selected_mean = str_mean
+                    modifywordDialog(selected_word, selected_mean)
+                }
 
                 registerForContextMenu(layout)
                 num++
@@ -238,7 +245,7 @@ class WordFragment: Fragment() {
 
 
 
-                layout_item.setPadding(70, 55, 70, 25)
+                layout_item.setPadding(70, 20, 70, 20)
                 layout.addView(layout_item)
 
                 registerForContextMenu(layout)

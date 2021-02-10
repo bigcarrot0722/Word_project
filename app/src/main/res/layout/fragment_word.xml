@@ -12,12 +12,14 @@
 
 
         <Button
-            android:id="@+id/btn_m"
+            android:id="@+id/btn_w"
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:textColor="@color/black"
-            android:text="뜻" />
+            android:text="W"
+            android:textSize="17sp"
+            android:textStyle="normal"/>
 
         <Button
             android:id="@+id/btn_wm"
@@ -26,16 +28,20 @@
 
             android:background="@drawable/popup_background"
             android:backgroundTint="@color/white"
-            android:text="단어+뜻"
-            android:textColor="@color/black" />
+            android:text="W/M"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="normal"/>
 
         <Button
-            android:id="@+id/btn_w"
+            android:id="@+id/btn_m"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"
             android:textColor="@color/black"
-            android:text="단어" />
+            android:text="M"
+            android:textSize="17sp"
+            android:textStyle="normal"/>
     </LinearLayout>
 
     <ScrollView

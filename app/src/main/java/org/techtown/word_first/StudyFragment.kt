@@ -73,15 +73,15 @@ class StudyFragment: Fragment() {
         studyFirst = view.findViewById(R.id.studyFirstCardView)
         studySecond = view.findViewById(R.id.studySecondCardView)
 
-        studyFirst.setOnClickListener{
-            val intent = Intent(activity, study_first::class.java)
-            startActivity(intent)
-        }
-
-        studySecond.setOnClickListener{
-            val intent = Intent(activity, study_second::class.java)
-            startActivity(intent)
-        }
+//        studyFirst.setOnClickListener{
+//            val intent = Intent(activity, study_first::class.java)
+//            startActivity(intent)
+//        }
+//
+//        studySecond.setOnClickListener{
+//            val intent = Intent(activity, study_second::class.java)
+//            startActivity(intent)
+//        }
 
         dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
         sqlitedb = dbManager.readableDatabase
