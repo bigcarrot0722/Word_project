@@ -18,6 +18,9 @@ class WordFragment: Fragment() {
     lateinit var dbManager: DBManager
     lateinit var sqlitedb: SQLiteDatabase
     lateinit var layout: LinearLayout
+    lateinit var button: Button
+    lateinit var button1: Button
+    lateinit var button2: Button
 
     companion object {
         const val TAG: String = "로그"
@@ -108,8 +111,146 @@ class WordFragment: Fragment() {
 
         setHasOptionsMenu(true)
 
+        button=view.findViewById(R.id.btn1)
+        button.setOnClickListener {dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
+            sqlitedb = dbManager.readableDatabase
+
+
+            var cursor: Cursor
+            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
+
+            var num: Int = 0
+            layout.removeAllViews()
+
+            while (cursor.moveToNext()) {
+
+                var str_word = cursor.getString(cursor.getColumnIndex("word")).toString()
+
+
+                var layout_item: LinearLayout = LinearLayout(activity)
+                layout_item.orientation = LinearLayout.VERTICAL
+                layout_item.id = num
+
+                var tvWord: TextView = TextView(activity)
+                tvWord.text = str_word
+                tvWord.textSize = 20f
+                //tvWord.setBackgroundColor(R.color.main_blue)
+                tvWord.setBackgroundResource(R.drawable.word_rounded_study)
+                tvWord.setPadding(45, 15, 45, 20)
+                layout_item.addView(tvWord)
+
+                layout_item.setPadding(70, 55, 70, 25)
+                layout.addView(layout_item)
+
+                registerForContextMenu(layout)
+                num++
+            }
+            cursor.close()
+            cursor.close()
+            sqlitedb.close()
+            dbManager.close()
+
+            setHasOptionsMenu(true)
+
+        }
+
+        button2=view.findViewById(R.id.btn3)
+        button2.setOnClickListener {
+            dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
+            sqlitedb = dbManager.readableDatabase
+
+            layout.removeAllViews()
+
+            var cursor: Cursor
+            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
+
+            var num: Int = 0
+            while (cursor.moveToNext()) {
+                var str_word = cursor.getString(cursor.getColumnIndex("word")).toString()
+                var str_mean = cursor.getString(cursor.getColumnIndex("mean")).toString()
+
+                var layout_item: LinearLayout = LinearLayout(activity)
+                layout_item.orientation = LinearLayout.VERTICAL
+                layout_item.id = num
+
+                var tvWord: TextView = TextView(activity)
+                tvWord.text = str_word
+                tvWord.textSize = 22f
+                //tvWord.setBackgroundColor(R.color.main_blue)
+                tvWord.setBackgroundResource(R.drawable.word_rounded)
+                tvWord.setPadding(45, 15, 45, 20)
+                layout_item.addView(tvWord)
+
+                var tvMean: TextView = TextView(activity)
+                tvMean.text = str_mean
+                tvMean.textSize = 13f
+                tvMean.setBackgroundResource(R.drawable.mean_rounded)
+                tvMean.setPadding(45, 15, 45, 20)
+                layout_item.addView(tvMean)
+
+
+
+                layout_item.setPadding(70, 55, 70, 25)
+                layout.addView(layout_item)
+
+                registerForContextMenu(layout)
+                num++
+            }
+            cursor.close()
+            cursor.close()
+            sqlitedb.close()
+            dbManager.close()
+
+            setHasOptionsMenu(true)
+        }
+
+        button1=view.findViewById(R.id.btn2)
+        button1.setOnClickListener {
+            dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
+            sqlitedb = dbManager.readableDatabase
+
+            layout.removeAllViews()
+
+            var cursor: Cursor
+            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
+
+            var num: Int = 0
+            while (cursor.moveToNext()) {
+
+
+                var str_mean = cursor.getString(cursor.getColumnIndex("mean")).toString()
+
+                var layout_item: LinearLayout = LinearLayout(activity)
+                layout_item.orientation = LinearLayout.VERTICAL
+                layout_item.id = num
+
+
+                var tvMean: TextView = TextView(activity)
+                tvMean.text = str_mean
+                tvMean.textSize = 20f
+                tvMean.setBackgroundResource(R.drawable.word_rounded_study)
+                tvMean.setPadding(45, 15, 45, 20)
+                layout_item.addView(tvMean)
+
+
+
+                layout_item.setPadding(70, 55, 70, 25)
+                layout.addView(layout_item)
+
+                registerForContextMenu(layout)
+                num++
+            }
+            cursor.close()
+            cursor.close()
+            sqlitedb.close()
+            dbManager.close()
+
+            setHasOptionsMenu(true)
+        }
+
         return view
     }
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu_word_frag, menu)

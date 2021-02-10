@@ -7,57 +7,7 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-
-        <Button
-            android:id="@+id/btn2"
-            android:layout_width="136dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            android:text="뜻만" />
-
-        <Button
-            android:id="@+id/btn3"
-            android:layout_width="132dp"
-            android:layout_height="wrap_content"
-
-            android:background="@drawable/popup_background"
-            android:backgroundTint="@color/white"
-            android:text="단어+뜻"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/btn1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            android:text="단어만" />
-    </LinearLayout>
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn2"
-        app:layout_constraintVertical_bias="0.016"
-        tools:layout_editor_absoluteX="-16dp">
-
-        <LinearLayout
-            android:id="@+id/word_study"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-        </LinearLayout>
-
-    </ScrollView>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
