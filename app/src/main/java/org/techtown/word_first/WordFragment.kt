@@ -2,10 +2,9 @@ package org.techtown.word_first
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Context
+import android.content.pm.ConfigurationInfo
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -18,9 +17,9 @@ class WordFragment: Fragment() {
     lateinit var dbManager: DBManager
     lateinit var sqlitedb: SQLiteDatabase
     lateinit var layout: LinearLayout
-    lateinit var button: Button
-    lateinit var button1: Button
-    lateinit var button2: Button
+    lateinit var btn_w: Button
+    lateinit var btn_wm: Button
+    lateinit var btn_m: Button
 
     companion object {
         const val TAG: String = "로그"
@@ -87,10 +86,13 @@ class WordFragment: Fragment() {
 
             var tvMean: TextView = TextView(activity)
             tvMean.text = str_mean
-            tvMean.textSize = 20f
+            tvMean.textSize = 15f
             tvMean.setBackgroundResource(R.drawable.mean_rounded)
             tvMean.setPadding(45,15,45,20)
             layout_item.addView(tvMean)
+
+            var rbimportance: RatingBar = RatingBar(activity)
+            layout_item.addView(rbimportance)
 
             layout_item.setOnClickListener {
                 selected_word = str_word
@@ -98,10 +100,9 @@ class WordFragment: Fragment() {
                 modifywordDialog(selected_word, selected_mean)
             }
 
-            layout_item.setPadding(70, 55, 70, 25)
-            layout.addView(layout_item)
+            layout_item.setPadding(70, 55, 70, 5)
+            layout.addView(layout_item, 0)
 
-            registerForContextMenu(layout)
             num++
         }
         cursor.close()
@@ -111,13 +112,14 @@ class WordFragment: Fragment() {
 
         setHasOptionsMenu(true)
 
-        button=view.findViewById(R.id.btn1)
-        button.setOnClickListener {dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
+        btn_w=view.findViewById(R.id.btn_w)
+        btn_w.setOnClickListener {
+            dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
 
 
             var cursor: Cursor
-            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
+            cursor = sqlitedb.rawQuery("SELECT word FROM wordTBL", null)
 
             var num: Int = 0
             layout.removeAllViews()
@@ -125,7 +127,6 @@ class WordFragment: Fragment() {
             while (cursor.moveToNext()) {
 
                 var str_word = cursor.getString(cursor.getColumnIndex("word")).toString()
-
 
                 var layout_item: LinearLayout = LinearLayout(activity)
                 layout_item.orientation = LinearLayout.VERTICAL
@@ -139,13 +140,12 @@ class WordFragment: Fragment() {
                 tvWord.setPadding(45, 15, 45, 20)
                 layout_item.addView(tvWord)
 
-                layout_item.setPadding(70, 55, 70, 25)
-                layout.addView(layout_item)
+                layout_item.setPadding(70, 45, 70, 10)
+                layout.addView(layout_item,0)
 
                 registerForContextMenu(layout)
                 num++
             }
-            cursor.close()
             cursor.close()
             sqlitedb.close()
             dbManager.close()
@@ -154,65 +154,21 @@ class WordFragment: Fragment() {
 
         }
 
-        button2=view.findViewById(R.id.btn3)
-        button2.setOnClickListener {
-            dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
-            sqlitedb = dbManager.readableDatabase
-
-            layout.removeAllViews()
-
-            var cursor: Cursor
-            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
-
-            var num: Int = 0
-            while (cursor.moveToNext()) {
-                var str_word = cursor.getString(cursor.getColumnIndex("word")).toString()
-                var str_mean = cursor.getString(cursor.getColumnIndex("mean")).toString()
-
-                var layout_item: LinearLayout = LinearLayout(activity)
-                layout_item.orientation = LinearLayout.VERTICAL
-                layout_item.id = num
-
-                var tvWord: TextView = TextView(activity)
-                tvWord.text = str_word
-                tvWord.textSize = 22f
-                //tvWord.setBackgroundColor(R.color.main_blue)
-                tvWord.setBackgroundResource(R.drawable.word_rounded)
-                tvWord.setPadding(45, 15, 45, 20)
-                layout_item.addView(tvWord)
-
-                var tvMean: TextView = TextView(activity)
-                tvMean.text = str_mean
-                tvMean.textSize = 13f
-                tvMean.setBackgroundResource(R.drawable.mean_rounded)
-                tvMean.setPadding(45, 15, 45, 20)
-                layout_item.addView(tvMean)
-
-
-
-                layout_item.setPadding(70, 55, 70, 25)
-                layout.addView(layout_item)
-
-                registerForContextMenu(layout)
-                num++
-            }
-            cursor.close()
-            cursor.close()
-            sqlitedb.close()
-            dbManager.close()
-
-            setHasOptionsMenu(true)
+        btn_wm=view.findViewById(R.id.btn_wm)
+        btn_wm.setOnClickListener {
+            var ft: FragmentTransaction? = fragmentManager?.beginTransaction()
+            ft?.detach(this)?.attach(this)?.commit() //프래그먼트 새로고침
         }
 
-        button1=view.findViewById(R.id.btn2)
-        button1.setOnClickListener {
+        btn_m=view.findViewById(R.id.btn_m)
+        btn_m.setOnClickListener {
             dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
 
             layout.removeAllViews()
 
             var cursor: Cursor
-            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
+            cursor = sqlitedb.rawQuery("SELECT mean FROM wordTBL", null)
 
             var num: Int = 0
             while (cursor.moveToNext()) {
@@ -232,10 +188,8 @@ class WordFragment: Fragment() {
                 tvMean.setPadding(45, 15, 45, 20)
                 layout_item.addView(tvMean)
 
-
-
-                layout_item.setPadding(70, 55, 70, 25)
-                layout.addView(layout_item)
+                layout_item.setPadding(70, 45, 70, 10)
+                layout.addView(layout_item,0)
 
                 registerForContextMenu(layout)
                 num++
