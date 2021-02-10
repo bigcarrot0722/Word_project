@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.Word_first" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimary">@color/main_blue</item>
         <item name="colorPrimaryVariant">@color/main_blue</item>
         <item name="colorOnPrimary">@color/main_blue</item>
         <!-- Secondary brand color. -->

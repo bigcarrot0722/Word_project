@@ -36,8 +36,8 @@ class TranslateFragment: Fragment() {
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        var aaa: androidx.appcompat.app.ActionBar? = (getActivity() as AppCompatActivity?)!!.supportActionBar
-//        aaa!!.hide()
+        var aaa: androidx.appcompat.app.ActionBar? = (getActivity() as AppCompatActivity?)!!.supportActionBar
+        aaa!!.show()
 
         Log.d(TAG, "StudyFragment - onCreate() called")
 

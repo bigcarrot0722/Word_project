@@ -36,10 +36,10 @@ public class MainActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        supportActionBar?.setIcon(R.drawable.logo_alertdialog)
-        supportActionBar?.elevation=0.0f
         supportActionBar?.setTitle("모두의 단어")
-        val colorDrawable = ColorDrawable(Color.parseColor("#FDDDDD"))
+//        supportActionBar?.setIcon(R.drawable.logo_actionbar)
+        supportActionBar?.elevation=0.0f
+        val colorDrawable = ColorDrawable(Color.parseColor("#FFFFFF"))
         supportActionBar?.setBackgroundDrawable(colorDrawable)
 
 

@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 
@@ -37,6 +38,9 @@ class WordFragment: Fragment() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "WordFragment - onCreate() called")
 
+        var aaa: androidx.appcompat.app.ActionBar? =
+                (getActivity() as AppCompatActivity?)!!.supportActionBar
+        aaa!!.show()
 
     }
 
