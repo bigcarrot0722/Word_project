@@ -20,3 +20,20 @@ class DBManager(
     }
 
 }
+
+class WrongDBManager(
+    context: FragmentActivity?,
+    name: String?,
+    factory: SQLiteDatabase.CursorFactory?,
+    version: Int
+) : SQLiteOpenHelper(context, name, factory, version) {
+    override fun onCreate(db: SQLiteDatabase?) {
+        db!!.execSQL("CREATE TABLE wrongTBL (word text, mean text)")
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        db!!.execSQL("DROP TABLE IF EXISTS wrongTBL")
+        onCreate(db)
+    }
+
+}

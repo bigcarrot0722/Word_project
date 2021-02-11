@@ -31,13 +31,12 @@ public class MainActivity : AppCompatActivity(){
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar?.elevation=0.0f
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setTitle("모두의 단어")
-//        supportActionBar?.setIcon(R.drawable.logo_actionbar)
+        supportActionBar?.setIcon(R.drawable.logo_actionbar)
         supportActionBar?.elevation=0.0f
         val colorDrawable = ColorDrawable(Color.parseColor("#FFFFFF"))
         supportActionBar?.setBackgroundDrawable(colorDrawable)
@@ -54,17 +53,13 @@ public class MainActivity : AppCompatActivity(){
         wordFragment = WordFragment.newInstance()
         supportFragmentManager.beginTransaction().add(R.id.fragments_frame, wordFragment).commit()
 
-//        searchFragment = SearchFragment.newInstance()
         searchFragment = SearchFragment.newInstance()
         studyFragment = StudyFragment.newInstance()
         wordFragment = WordFragment.newInstance()
         translateFragment = TranslateFragment.newInstance()
 
-
-
     }
 
-//    var ab : ActionBar? = getActionBar()
 
     private val onBottomNavigationSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener {
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
@@ -78,7 +73,6 @@ public class MainActivity : AppCompatActivity(){
                 Log.d(TAG, "MainActivity - 공부 클릭")
                 transaction.replace(R.id.fragments_frame, studyFragment).commit()
 
-//                ab?.hide()
             }
             R.id.menu_word -> {
                 Log.d(TAG, "MainActivity - 단어장 클릭")

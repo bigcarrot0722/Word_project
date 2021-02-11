@@ -17,11 +17,13 @@ import androidx.fragment.app.FragmentTransaction
 class WordFragment: Fragment() {
 
     lateinit var dbManager: DBManager
+    lateinit var wdbManager:WrongDBManager
     lateinit var sqlitedb: SQLiteDatabase
     lateinit var layout: LinearLayout
-    lateinit var button: Button
-    lateinit var button1: Button
-    lateinit var button2: Button
+    lateinit var btn_w: Button
+    lateinit var btn_wm: Button
+    lateinit var btn_m: Button
+    lateinit var tvNum:TextView
 
     companion object {
         const val TAG: String = "로그"
@@ -68,6 +70,7 @@ class WordFragment: Fragment() {
         dbManager = DBManager(activity, "wordDB", null, 1)
         sqlitedb = dbManager.readableDatabase
 
+        tvNum=view.findViewById(R.id.tvNum)
         layout = view.findViewById(R.id.word)
 
         var cursor: Cursor
@@ -84,14 +87,14 @@ class WordFragment: Fragment() {
 
             var tvWord: TextView = TextView(activity)
             tvWord.text = str_word
-            tvWord.textSize = 22f
+            tvWord.textSize = 20f
             tvWord.setBackgroundResource(R.drawable.word_rounded)
             tvWord.setPadding(45,10,45,15)
             layout_item.addView(tvWord)
 
             var tvMean: TextView = TextView(activity)
             tvMean.text = str_mean
-            tvMean.textSize = 13f
+            tvMean.textSize = 15f
             tvMean.setBackgroundResource(R.drawable.mean_rounded)
             tvMean.setPadding(45,15,45,20)
             layout_item.addView(tvMean)
@@ -102,26 +105,27 @@ class WordFragment: Fragment() {
                 modifywordDialog(selected_word, selected_mean)
             }
 
-            layout_item.setPadding(70, 20, 70, 20)
-            layout.addView(layout_item)
+            layout_item.setPadding(70, 15, 70, 25)
+            layout.addView(layout_item,0)
 
-            registerForContextMenu(layout)
             num++
         }
-        cursor.close()
+        tvNum.setText("총 "+cursor.count+"개")
+
         cursor.close()
         sqlitedb.close()
         dbManager.close()
 
         setHasOptionsMenu(true)
 
-        button=view.findViewById(R.id.btn_w)
-        button.setOnClickListener {dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
+        btn_w=view.findViewById(R.id.btn_w)
+        btn_w.setOnClickListener {
+            dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
 
 
             var cursor: Cursor
-            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
+            cursor = sqlitedb.rawQuery("SELECT word FROM wordTBL", null)
 
             var num: Int = 0
             layout.removeAllViews()
@@ -138,18 +142,19 @@ class WordFragment: Fragment() {
                 var tvWord: TextView = TextView(activity)
                 tvWord.text = str_word
                 tvWord.textSize = 20f
-                //tvWord.setBackgroundColor(R.color.main_blue)
                 tvWord.setBackgroundResource(R.drawable.word_rounded_study)
                 tvWord.setPadding(45, 15, 45, 20)
                 layout_item.addView(tvWord)
 
-                layout_item.setPadding(70, 25, 70, 25)
-                layout.addView(layout_item)
+                layout_item.setPadding(70, 15, 70, 25)
+                layout.addView(layout_item,0)
 
 
                 registerForContextMenu(layout)
                 num++
             }
+            tvNum.setText("총 "+cursor.count+"개")
+
             cursor.close()
             cursor.close()
             sqlitedb.close()
@@ -159,71 +164,21 @@ class WordFragment: Fragment() {
 
         }
 
-        button2=view.findViewById(R.id.btn_wm)
-        button2.setOnClickListener {
-            dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
-            sqlitedb = dbManager.readableDatabase
-
-            layout.removeAllViews()
-
-            var cursor: Cursor
-            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
-
-            var num: Int = 0
-            while (cursor.moveToNext()) {
-                var str_word = cursor.getString(cursor.getColumnIndex("word")).toString()
-                var str_mean = cursor.getString(cursor.getColumnIndex("mean")).toString()
-
-                var layout_item: LinearLayout = LinearLayout(activity)
-                layout_item.orientation = LinearLayout.VERTICAL
-                layout_item.id = num
-
-                var tvWord: TextView = TextView(activity)
-                tvWord.text = str_word
-                tvWord.textSize = 22f
-                //tvWord.setBackgroundColor(R.color.main_blue)
-                tvWord.setBackgroundResource(R.drawable.word_rounded)
-                tvWord.setPadding(45, 15, 45, 20)
-                layout_item.addView(tvWord)
-
-                var tvMean: TextView = TextView(activity)
-                tvMean.text = str_mean
-                tvMean.textSize = 13f
-                tvMean.setBackgroundResource(R.drawable.mean_rounded)
-                tvMean.setPadding(45, 15, 45, 20)
-                layout_item.addView(tvMean)
-
-
-
-                layout_item.setPadding(70, 20, 70, 20)
-                layout.addView(layout_item)
-
-                layout_item.setOnClickListener {
-                    selected_word = str_word
-                    selected_mean = str_mean
-                    modifywordDialog(selected_word, selected_mean)
-                }
-
-                registerForContextMenu(layout)
-                num++
-            }
-            cursor.close()
-            cursor.close()
-            sqlitedb.close()
-            dbManager.close()
-
-            setHasOptionsMenu(true)
+        btn_wm=view.findViewById(R.id.btn_wm)
+        btn_wm.setOnClickListener {
+            var ft: FragmentTransaction? = fragmentManager?.beginTransaction()
+            ft?.detach(this)?.attach(this)?.commit() //프래그먼트 새로고침
         }
 
-        button1=view.findViewById(R.id.btn_m)
-        button1.setOnClickListener {
+        btn_m=view.findViewById(R.id.btn_m)
+        btn_m.setOnClickListener {
             dbManager = DBManager(this.getActivity(), "wordDB", null, 1)
             sqlitedb = dbManager.readableDatabase
 
             layout.removeAllViews()
 
             var cursor: Cursor
-            cursor = sqlitedb.rawQuery("SELECT * FROM wordTBL", null)
+            cursor = sqlitedb.rawQuery("SELECT mean FROM wordTBL", null)
 
             var num: Int = 0
             while (cursor.moveToNext()) {
@@ -244,13 +199,14 @@ class WordFragment: Fragment() {
                 layout_item.addView(tvMean)
 
 
-
                 layout_item.setPadding(70, 20, 70, 20)
-                layout.addView(layout_item)
+                layout.addView(layout_item,0)
 
                 registerForContextMenu(layout)
                 num++
             }
+            tvNum.setText("총 "+cursor.count+"개")
+
             cursor.close()
             cursor.close()
             sqlitedb.close()
@@ -343,9 +299,27 @@ class WordFragment: Fragment() {
         val dialogMean = dialogView.findViewById<EditText>(R.id.dialog_mean)
         val btnModify = dialogView.findViewById<Button>(R.id.btn_modify)
         val btnDelete = dialogView.findViewById<Button>(R.id.btn_delete)
+        val btnWrong = dialogView.findViewById<Button>(R.id.btn_wrong)
 
         dialogWord.setText(w)
         dialogMean.setText(m)
+
+        btnWrong.setOnClickListener {
+            var str_word: String = dialogWord.text.toString()
+            var str_mean: String = dialogMean.text.toString()
+
+            wdbManager = WrongDBManager(activity, "wrongDB", null, 1)
+            sqlitedb = wdbManager.writableDatabase
+
+            sqlitedb.execSQL("INSERT INTO wrongTBL VALUES ('" + str_word + "','" + str_mean + "')")
+            sqlitedb.close()
+            wdbManager.close()
+
+            //var ft: FragmentTransaction? = fragmentManager?.beginTransaction()
+            //ft?.detach(this)?.attach(this)?.commit() //프래그먼트 새로고침
+            Toast.makeText(activity, "추가 되었습니다", Toast.LENGTH_SHORT).show()
+            dialog?.dismiss()
+        }
 
         btnModify.setOnClickListener {//단어 수정
             var str_word: String = dialogWord.text.toString()

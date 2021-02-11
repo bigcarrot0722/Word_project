@@ -4,7 +4,7 @@
         android:color="@color/main_blue"
         android:state_checked="true" />
 
-    <item android:color="#E8E3E3"
+    <item android:color="@color/main_grey"
         android:state_checked="false" />
 
 </selector>
