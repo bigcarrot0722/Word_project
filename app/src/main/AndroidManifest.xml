@@ -12,8 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Word_first"
         android:usesCleartextTraffic="true">
-        <activity android:name=".study_second"></activity>
-        <activity android:name=".study_first" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
