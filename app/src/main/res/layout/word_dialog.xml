@@ -82,7 +82,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"
-            android:hint="수정할 단어의 뜻을 입력하세요.(예: 뜻1, 뜻2)"
+            android:hint="수정할 단어의 뜻을 입력하세요."
             android:lines="3"
             android:scrollbars="vertical"
             android:theme="@style/EditTheme" />
